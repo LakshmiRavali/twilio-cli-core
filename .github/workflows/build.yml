@@ -1,8 +1,8 @@
 name: Cli-core Buils
 
 on:
-  pull_request:
-    branches: [main]
+  repository_dispatch:
+    types: [buildCliCore]
   push:
     branches: [ main ]
   workflow_dispatch:
