@@ -50,11 +50,13 @@ jobs:
     - name: Copy OAI folder
       run: |
         pwd
-        cp -r spec/json oai_definitions
-    - uses: actions/checkout@v2
-    - name: Update OAI folder
-      run: |
-        rm -f src/services/twilio-api/twilio*.json
-        cp -r ${{ github.workspace }}/oai_definitions src/services/twilio-api/
+        rm -f ${{ github.workspace }}/src/services/twilio-api/twilio*.json
+        cp -r spec/json ${{ github.workspace }}/src/services/twilio-api/
         git status
+#     - uses: actions/checkout@v2
+#     - name: Update OAI folder
+#       run: |
+#         rm -f src/services/twilio-api/twilio*.json
+#         cp -r ${{ github.workspace }}/oai_definitions src/services/twilio-api/
+#         git status
         
