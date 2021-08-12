@@ -78,6 +78,8 @@ jobs:
         ls
         pwd
         cp -R ~/oai_definitions/json/. src/services/twilio-api/
+        git config --global user.email "lakshmiravali.rimmalapudi@gmail.com"
+        git config --global user.name "lakshmiravali"
         git add .
         git commit -m "Updated API definitions" 
         git push origin main
