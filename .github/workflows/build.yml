@@ -58,6 +58,9 @@ jobs:
         user_name: 'lakshmiravali'
         commit_message: 'A custom message for the commit'
     - run: ls -ltr spec
+    - run: mkdir -p csarath/hello
+    - run: cp -R spec/json/ csarath/hello/
+    - run: ls -ltr csarath/hello
 #     steps:
 #     - run: mkdir oai_definitions
 #     - run: pwd
