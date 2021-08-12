@@ -41,19 +41,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: mkdir ${{ github.workspace }}/oai_definitions
-#     - name: Create oai_definitions folder
-#     - uses: actions/checkout@v2
-#       with:
-#         repository: 'LakshmiRavali/twilio-oai'
-#         token:  ${{ secrets.OAI_TOKEN }}
-#     - name: Copy OAI folder
-#       run: |
-#         pwd
-#         cp spec/json oai_definitions
-#     - uses: actions/checkout@v2
-#     - name: Update OAI folder
-#       run: |
-#         rm -f src/services/twilio-api/twilio*.json
-#         cp ${{ github.workspace }}/oai_definitions src/services/twilio-api/
-#         git status
+    - uses: actions/checkout@v2
+      with:
+        repository: 'LakshmiRavali/twilio-oai'
+        token:  ${{ secrets.OAI_TOKEN }}
+    - name: Copy OAI folder
+      run: |
+        pwd
+        cp spec/json oai_definitions
+    - uses: actions/checkout@v2
+    - name: Update OAI folder
+      run: |
+        rm -f src/services/twilio-api/twilio*.json
+        cp ${{ github.workspace }}/oai_definitions src/services/twilio-api/
+        git status
         
