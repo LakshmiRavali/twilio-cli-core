@@ -40,21 +40,38 @@ jobs:
   updateAPIDefinitions:
     runs-on: ubuntu-latest
     steps:
-    - run: mkdir oai_definitions
-    - run: pwd
-    - run: ls
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
       with:
         repository: 'LakshmiRavali/twilio-oai'
         token:  ${{ secrets.OAI_TOKEN }}
-        run: |
-          pwd
-          cp -r spec/json ${{ github.workspace }}/oai_definitions/
-    - uses: actions/checkout@v2
-    - name: Update OAI folder
-      run: |
-        ls
-        rm -f src/services/twilio-api/twilio*.json
-        cp -r oai_definitions src/services/twilio-api/
-        git status
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        source_file: 'spec/json/'
+        destination_repo: 'LakshmiRavali/twilio-cli-core'
+        destination_folder: 'src/services/twilio-api/'
+        user_email: 'lakshmiravali.rimmalapudi@gmail.com'
+        user_name: 'lakshmiravali'
+        commit_message: 'A custom message for the commit'
+#     steps:
+#     - run: mkdir oai_definitions
+#     - run: pwd
+#     - run: ls
+#     - uses: actions/checkout@v2
+#       with:
+#         repository: 'LakshmiRavali/twilio-oai'
+#         token:  ${{ secrets.OAI_TOKEN }}
+#         run: |
+#           pwd
+#           cp -r spec/json ${{ github.workspace }}/oai_definitions/
+#     - uses: actions/checkout@v2
+#     - name: Update OAI folder
+#       run: |
+#         ls
+#         rm -f src/services/twilio-api/twilio*.json
+#         cp -r oai_definitions src/services/twilio-api/
+#         git status
         
