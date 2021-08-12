@@ -57,6 +57,7 @@ jobs:
         user_email: 'lakshmiravali.rimmalapudi@gmail.com'
         user_name: 'lakshmiravali'
         commit_message: 'A custom message for the commit'
+    - run: ls -ltr spec
 #     steps:
 #     - run: mkdir oai_definitions
 #     - run: pwd
