@@ -47,10 +47,9 @@ jobs:
       with:
         repository: 'LakshmiRavali/twilio-oai'
         token:  ${{ secrets.OAI_TOKEN }}
-    - name: Copy OAI folder
-      run: |
-        pwd
-        cp -r spec/json ${{ github.workspace }}/oai_definitions/
+        run: |
+          pwd
+          cp -r spec/json ${{ github.workspace }}/oai_definitions/
     - uses: actions/checkout@v2
     - name: Update OAI folder
       run: |
