@@ -37,3 +37,23 @@ jobs:
 #           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 #           repository: ${{ matrix.repo }}
 #           event-type: releaseCli
+  updateAPIDefinitions:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create oai_definitions folder
+    - run: mkdir ${{ github.workspace }}/oai_definitions
+    - uses: actions/checkout@v2
+      with:
+        repository: 'LakshmiRavali/twilio-oai'
+        token:  ${{ secrets.OAI_TOKEN }}
+    - name: Copy OAI folder
+      run: |
+        pwd
+        cp spec/json oai_definitions
+    - uses: actions/checkout@v2
+    - name: Update OAI folder
+      run: |
+        rm -f src/services/twilio-api/twilio*.json
+        cp ${{ github.workspace }}/oai_definitions src/services/twilio-api/
+        git status
+        
