@@ -62,23 +62,23 @@ jobs:
 #     - run: cp -RT spec/json/ csarath/hello/
 #     - run: ls -ltr csarath/hello
     steps:
-    - run: mkdir ~/oai_definitions
+    - run: mkdir -p ~/oai_definitions/json
     - run: pwd
     - run: ls
     - uses: actions/checkout@v2
       with:
         repository: 'LakshmiRavali/twilio-oai'
         token:  ${{ secrets.OAI_TOKEN }}
-        run: |
-          pwd
-          echo ${{ github.workspace }}
-          cp -R spec/json/. ~/oai_definitions/
+    - run: |
+        cp -R spec/json/. ~/oai_definitions/json/
+        cp -R CHANGES.md ~/oai_definitions/CHANGES.md
     - uses: actions/checkout@v2
     - name: Update OAI folder
       run: |
         ls
-        rm -f src/services/twilio-api/twilio*.json
         pwd
-        cp -R ~/oai_definitions/. src/services/twilio-api/
-        git status
+        cp -R ~/oai_definitions/json/. src/services/twilio-api/
+        git add .
+        git commit -m "Updated API definitions" 
+        git push origin main
         
