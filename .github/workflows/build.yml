@@ -50,9 +50,9 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
       with:
-        source_file: 'spec/json'
+        source_file: 'spec/json/'
         destination_repo: 'LakshmiRavali/twilio-cli-core'
-        destination_folder: 'src/services/twilio-api'
+        destination_folder: 'src/services/twilio-api/'
         user_email: 'lakshmiravali.rimmalapudi@gmail.com'
         user_name: 'lakshmiravali'
         commit_message: 'A custom message for the commit'
