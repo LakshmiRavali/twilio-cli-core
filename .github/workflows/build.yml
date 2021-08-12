@@ -50,7 +50,7 @@ jobs:
     - name: Copy OAI folder
       run: |
         pwd
-        cp -r spec/json ${{ github.workspace }}/oai_definitions
+        cp -r spec/json ${{ github.workspace }}/oai_definitions/
     - uses: actions/checkout@v2
     - name: Update OAI folder
       run: |
