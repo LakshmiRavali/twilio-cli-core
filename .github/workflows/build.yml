@@ -54,6 +54,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Update OAI folder
       run: |
+        ls
         rm -f src/services/twilio-api/twilio*.json
         cp -r oai_definitions src/services/twilio-api/
         git status
