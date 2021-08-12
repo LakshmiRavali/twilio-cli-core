@@ -62,7 +62,7 @@ jobs:
 #     - run: cp -RT spec/json/ csarath/hello/
 #     - run: ls -ltr csarath/hello
     steps:
-    - run: mkdir oai_definitions
+    - run: mkdir ~/oai_definitions
     - run: pwd
     - run: ls
     - uses: actions/checkout@v2
@@ -72,13 +72,13 @@ jobs:
         run: |
           pwd
           echo ${{ github.workspace }}
-          cp -R spec/json/. ${{ github.workspace }}/oai_definitions/
+          cp -R spec/json/. ~/oai_definitions/
     - uses: actions/checkout@v2
     - name: Update OAI folder
       run: |
         ls
         rm -f src/services/twilio-api/twilio*.json
         pwd
-        cp -R oai_definitions/. src/services/twilio-api/
+        cp -R ~/oai_definitions/. src/services/twilio-api/
         git status
         
