@@ -40,8 +40,8 @@ jobs:
   updateAPIDefinitions:
     runs-on: ubuntu-latest
     steps:
-    - name: Create oai_definitions folder
     - run: mkdir ${{ github.workspace }}/oai_definitions
+    - name: Create oai_definitions folder
     - uses: actions/checkout@v2
       with:
         repository: 'LakshmiRavali/twilio-oai'
