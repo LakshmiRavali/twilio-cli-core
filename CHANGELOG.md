@@ -1,3 +1,10 @@
+# [5.29.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/v5.28.0...5.29.0) (2021-08-17)
+
+
+### Features
+
+* test ([bc29a7d](https://github.com/LakshmiRavali/twilio-cli-core/commit/bc29a7d366f0c3007659029a8932a6bd6097787f))
+
 # [5.28.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/v5.27.1...v5.28.0) (2021-08-17)
 
 
