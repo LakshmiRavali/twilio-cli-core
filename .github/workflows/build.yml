@@ -36,7 +36,7 @@ jobs:
         cache: 'npm'
     - name: Install semantic-release extra plugins
       run: npm install --save-dev @semantic-release/changelog @semantic-release/git
-    - run: npm ci && npx semantic-release
+    - run: npm ci && npx semantic-release --tag-format ${version}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #   build:
