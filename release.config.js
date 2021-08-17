@@ -24,7 +24,7 @@ module.exports = {
         // eslint-disable-next-line no-template-curly-in-string
         message: 'chore(release): set `package.json` to ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
         // eslint-disable-next-line no-template-curly-in-string
-        tagFormat: `${version}`,
+        // tagFormat: `${version}`,
       },
     ],
   ],
