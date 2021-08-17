@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/v1.0.0...v1.1.0) (2021-08-17)
+
+
+### Bug Fixes
+
+* tag update ([a640b7b](https://github.com/LakshmiRavali/twilio-cli-core/commit/a640b7bc295bf89169af8be2caacabcf4663d46d))
+* Update ([aa455c8](https://github.com/LakshmiRavali/twilio-cli-core/commit/aa455c81a6b00e36bcc71aeae4cc28cd14181491))
+
+
+### Features
+
+* Update ([cbfbb25](https://github.com/LakshmiRavali/twilio-cli-core/commit/cbfbb259082ce403e29553bc8aea7d15dfc6113c))
+
 # 1.0.0 (2021-08-17)
 
 
