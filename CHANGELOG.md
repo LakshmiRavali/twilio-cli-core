@@ -1,3 +1,10 @@
+# [5.30.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.29.0...5.30.0) (2021-08-19)
+
+
+### Features
+
+* Update ([cb8c38a](https://github.com/LakshmiRavali/twilio-cli-core/commit/cb8c38a5eecbdabcf1d2b951796bbbf69482b1c3))
+
 Api
 
 Corrected the price, call_sid_to_coach, and uri data types for Conference, Participant, and Recording (breaking change)
