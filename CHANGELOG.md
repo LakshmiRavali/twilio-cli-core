@@ -1,3 +1,10 @@
+Api
+
+Corrected the price, call_sid_to_coach, and uri data types for Conference, Participant, and Recording (breaking change)
+Made documentation for property time_limit in the call api public. (breaking change)
+Added domain_sid in sip_credential_list_mapping and sip_ip_access_control_list_mapping APIs (breaking change)
+
+
 # [5.29.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/v5.28.0...5.29.0) (2021-08-17)
 
 
