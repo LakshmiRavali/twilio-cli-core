@@ -5,7 +5,7 @@ echo "Running update changelog script"
 echo "Install python"
 sudo apt-get install python
 python --version
-sudo python ./update_api_definitions.py
+sudo python scripts/update_api_definitions.py
 versionType=$?
 echo "Version type: $versionType"
 echo "Git configurations"
@@ -20,6 +20,7 @@ elif [ $versionType == 1 ]
 then
   commitMessage='feat: Updated api definitions'
 elif [ $versionType == 2 ]
+then
   commitMessage='fix: Updated api definitions'
 else
   exit
