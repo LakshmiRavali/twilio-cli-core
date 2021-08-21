@@ -108,5 +108,5 @@ jobs:
     - name: Update OAI folder
       run: |
         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
-        /bin/sh scripts/updateApiDefinitions.sh
+        bash scripts/updateApiDefinitions.sh
         
