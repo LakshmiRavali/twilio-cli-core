@@ -8,7 +8,7 @@ def get_and_update_change_log_type():
     version_regex = r'(\d+)\.(\d+)\.(\d+)'
     date_regex = r'\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])'
     home = str(Path.home())
-    ch = ChangeLogHelper(version_regex, date_regex, 'CHANGES.md', home+'/oai_definitions/CHANGES.md')
+    ch = ChangeLogHelper(version_regex, date_regex, 'CHANGES.md', 'OAI_CHANGES.md')
     ch.append_changes_to_changelog()
     versions = ch.get_first_two_versions()
     if len(versions) == 2:
