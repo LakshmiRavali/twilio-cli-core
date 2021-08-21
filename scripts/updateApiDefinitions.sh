@@ -5,6 +5,7 @@ echo "Running update changelog script"
 echo "Install python"
 sudo apt-get install python3.6
 python --version
+ls ~/oai_definitions/
 sudo python scripts/update_api_definitions.py
 versionType=$?
 echo "Version type: $versionType"
