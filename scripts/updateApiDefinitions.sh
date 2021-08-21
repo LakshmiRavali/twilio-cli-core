@@ -9,6 +9,7 @@ ls ~/oai_definitions/
 sudo python scripts/update_api_definitions.py
 versionType=$?
 echo "Version type: $versionType"
+rm -rf OAI_CHANGES.md
 echo "Git configurations"
 git config --global user.email "lakshmiravali.rimmalapudi@gmail.com"
 git config --global user.name "lakshmiravali"
