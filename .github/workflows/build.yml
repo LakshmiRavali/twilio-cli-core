@@ -94,6 +94,7 @@ jobs:
 #     - run: ls -ltr csarath/hello
     steps:
     - run: mkdir -p ~/oai_definitions/json
+    - run: cd ~/oai_definitions
     - run: pwd
     - run: ls
     - uses: actions/checkout@v2
