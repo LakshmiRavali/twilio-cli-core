@@ -3,7 +3,7 @@ echo "Copying api-definitions"
 cp -R ~/oai_definitions/json/. src/services/twilio-api/
 echo "Running update changelog script"
 echo "Install python"
-sudo apt-get install python
+sudo apt-get install python3.6
 python --version
 sudo python scripts/update_api_definitions.py
 versionType=$?
