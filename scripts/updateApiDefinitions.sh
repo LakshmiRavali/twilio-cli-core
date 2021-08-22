@@ -2,12 +2,7 @@
 echo "Copying api-definitions"
 cp -R ~/oai_definitions/json/. src/services/twilio-api/
 echo "Running update changelog script"
-echo "Install python"
-sudo apt-get install python3.6
-python --version
-ls ~/oai_definitions/
-sudo python scripts/update_api_definitions.py
-versionType=$?
+versionType=$(node scripts/update-api-definitions.js)
 echo "Version type: $versionType"
 rm -rf OAI_CHANGES.md
 echo "Git configurations"
