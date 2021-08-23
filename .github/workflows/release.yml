@@ -71,7 +71,7 @@ jobs:
       - name: Getting tag
         id: test
         run: |
-          echo "::set-output name=TAG_NAME::$(git tag|tail -1)"
+          echo "::set-output name=TAG_NAME::$(git describe --tags $(git rev-list --tags --max-count=1))"
       - run: echo "${{steps.test.outputs.TAG_NAME}}"
       - name: update release
         id: update_release
