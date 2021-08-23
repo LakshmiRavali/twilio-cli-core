@@ -24,4 +24,4 @@ else
 fi
 echo "Commit message:$commitMessage"
 git commit -m "$commitMessage"
-git push origin main
+git push origin test_branch 
