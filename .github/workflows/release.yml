@@ -64,23 +64,20 @@ jobs:
 #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   updateRelease:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ github.token }}
-      TAG_NAME: "5.28.0"
     steps:       
       - uses: actions/checkout@v2
-      - name: 'Get Previous tag'
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
-        with:
-          fallback: 5.28.0
-      - run: echo ${{ steps.previoustag.outputs.tag }}
-      - name: update release
-        id: update_release
-        uses: tubone24/update_release@v1.2.0
-        with:
-          is_append_body: true
-          body: "Testing append new" # new body text
+      - run: git fecth --tags
+      - run: echo git tag | tail -1 
+#       - name: update release
+#         id: update_release
+#         uses: tubone24/update_release@v1.2.0
+#         env:
+#           GITHUB_TOKEN: ${{ github.token }}
+#           TAG_NAME: ${{tag}}
+#         with:
+#           is_append_body: true
+#           body: "Testing append new" # new body text
+        
 #   build:
 
 #     runs-on: ubuntu-latest
