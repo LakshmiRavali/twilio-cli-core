@@ -68,22 +68,22 @@ jobs:
       GITHUB_TOKEN: ${{ github.token }}
       TAG_NAME: "5.28.0"
     steps:
-    - uses: actions/checkout@v2.2.0
+      - uses: actions/checkout@v2.2.0
+          with:
+            fetch-depth: 0
+        - name: 'Get Previous tag'
+          id: previoustag
+          uses: "WyriHaximus/github-action-get-previous-tag@v1"
+          with:
+            fallback: 5.28.0
+      - run: echo ${{ steps.previoustag.outputs.tag }}
+      - uses: actions/checkout@v2
+      - name: update release
+        id: update_release
+        uses: tubone24/update_release@v1.2.0
         with:
-          fetch-depth: 0
-      - name: 'Get Previous tag'
-        id: previoustag
-        uses: "WyriHaximus/github-action-get-previous-tag@v1"
-        with:
-          fallback: 5.28.0
-    - run: echo ${{ steps.previoustag.outputs.tag }}
-    - uses: actions/checkout@v2
-    - name: update release
-      id: update_release
-      uses: tubone24/update_release@v1.2.0
-      with:
-        is_append_body: true
-        body: "Testing append new" # new body text
+          is_append_body: true
+          body: "Testing append new" # new body text
 #   build:
 
 #     runs-on: ubuntu-latest
