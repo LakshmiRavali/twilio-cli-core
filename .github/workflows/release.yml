@@ -48,6 +48,8 @@ jobs:
     needs: [updateAPIDefinitions]
     steps:
     - uses: actions/checkout@v2
+    - run: git branch
+    - run: git log -3
     - run: npm install
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
