@@ -4,7 +4,7 @@ on:
   repository_dispatch:
     types: [ releaseCliCore ]
   push:
-    branches: [ main ]
+    branches: [ test_branch ]
   workflow_dispatch:
 
 jobs:
