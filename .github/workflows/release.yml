@@ -64,7 +64,6 @@ jobs:
 #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   updateRelease:
     runs-on: ubuntu-latest
-    needs: [release]
     env:
       GITHUB_TOKEN: ${{ github.token }}
       TAG_NAME: "5.28.0"
