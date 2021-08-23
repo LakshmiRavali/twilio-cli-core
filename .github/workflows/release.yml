@@ -70,8 +70,7 @@ jobs:
       - name: Getting tag
         id: test
         run: |
-          $tag=git tag | tail -1
-          echo ${{steps.test.tag}}
+          echo ::set-env name=TAG_NAME::$(git tag| tail -1)
 #       - name: update release
 #         id: update_release
 #         uses: tubone24/update_release@v1.2.0
