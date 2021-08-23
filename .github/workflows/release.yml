@@ -48,6 +48,7 @@ jobs:
     needs: [updateAPIDefinitions]
     steps:
     - uses: actions/checkout@v2
+    - run: git pull origin test_branch
     - run: git branch
     - run: git log -3
     - run: npm install
