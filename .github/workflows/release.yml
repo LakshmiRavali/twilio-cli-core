@@ -46,6 +46,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: [updateAPIDefinitions]
+    outputs:
+      output1: ${{ steps.semanticRelease.outputs }}
     steps:
     - uses: actions/checkout@v2
     - run: git pull origin test_branch
@@ -58,10 +60,26 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: Install semantic-release extra plugins
+      id: semanticRelease
       run: npm install --save-dev @semantic-release/changelog @semantic-release/git
     - run: npm ci && npx semantic-release -t \${version}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  updateRelease:
+    runs-on: ubuntu-latest
+    needs: [release]
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+      TAG_NAME: "5.28.0"
+    steps:
+    - run: echo ${{needs.release.outputs.output1.git_tag}}
+    - uses: actions/checkout@v2
+    - name: update release
+      id: update_release
+      uses: tubone24/update_release@v1.2.0
+      with:
+        is_append_body: true
+        body: "Testing append new" # new body text
 #   build:
 
 #     runs-on: ubuntu-latest
