@@ -67,7 +67,8 @@ jobs:
     steps:       
       - uses: actions/checkout@v2
       - run: git fetch --tags
-      - id: test
+      - name: Getting tag
+        id: test
       - run: $tag=git tag | tail -1 
       - run: echo ${{steps.test.tag}}
 #       - name: update release
