@@ -67,7 +67,9 @@ jobs:
     steps:       
       - uses: actions/checkout@v2
       - run: git fetch --tags
-      - run: echo git tag | tail -1 
+      - id: test
+      - run: $tag=git tag | tail -1 
+      - run: echo ${{steps.test.tag}}
 #       - name: update release
 #         id: update_release
 #         uses: tubone24/update_release@v1.2.0
