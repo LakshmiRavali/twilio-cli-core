@@ -60,7 +60,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: Install semantic-release extra plugins
-      id: semanticRelease
+    - id: semanticRelease
       run: npm install --save-dev @semantic-release/changelog @semantic-release/git
     - run: npm ci && npx semantic-release -t \${version}
       env:
