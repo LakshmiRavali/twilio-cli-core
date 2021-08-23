@@ -1,0 +1,90 @@
+name: Cli-core Build
+
+on:
+  repository_dispatch:
+    types: [ releaseCliCore ]
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+    - uses: actions/checkout@v2
+    - run: npm install
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm test
+  updateAPIDefinitions:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+    - run: mkdir -p ~/oai_definitions/json
+    - run: cd ~/oai_definitions
+    - run: pwd
+    - run: ls
+    - uses: actions/checkout@v2
+      with:
+        repository: 'LakshmiRavali/twilio-oai'
+        token:  ${{ secrets.OAI_TOKEN }}
+    - run: |
+        cp -R spec/json/. ~/oai_definitions/json/
+        cp -R CHANGES.md ~/oai_definitions/CHANGES.md
+    - uses: actions/checkout@v2
+    - name: Update OAI folder
+      run: |
+        cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+        bash scripts/updateApiDefinitions.sh
+  release:
+    runs-on: ubuntu-latest
+    needs: [updateAPIDefinitions]
+    steps:
+    - uses: actions/checkout@v2
+    - run: npm install
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Install semantic-release extra plugins
+      run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+    - run: npm ci && npx semantic-release -t \${version}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     strategy:
+#       matrix:
+#         node-version: [10.x]
+#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+#     steps:
+#     - uses: actions/checkout@v2
+# #     - run: npm install
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v2
+#     - run: npm ci
+#     - run: npm test
+#   releseCli:
+#     strategy:
+#       matrix:
+#         repo: ['LakshmiRavali/twilio-cli']
+#     runs-on: ubuntu-latest
+#     needs: [build]
+#     steps:
+#       - name: Repository Dispatch
+#         uses: peter-evans/repository-dispatch@v1
+#         with:
+#           token: ${{ secrets.REPO_ACCESS_TOKEN }}
+#           repository: ${{ matrix.repo }}
+#           event-type: releaseCli
