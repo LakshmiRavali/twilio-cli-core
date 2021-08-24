@@ -23,10 +23,10 @@ second line
 third line
 EOF
 )
-changeLog="${changeLog//'%'/'%25'}"
-changeLog="${changeLog//$'\n'/'%0A'}"
-changeLog="${changeLog//$'\r'/'%0D'}"
-echo "::set-output name=changeLog::$changeLog"
+echo "changeLog<<EOF" >> $GITHUB_ENV
+echo "$changeLog" >> $GITHUB_ENV
+echo "EOF" >> $GITHUB_ENV
+# echo "::set-output name=changeLog::$changeLog"
 # versionType=$(node scripts/get-version-type.js)
 # echo "Version type: $versionType"
 # rm -rf OAI_CHANGES.md
