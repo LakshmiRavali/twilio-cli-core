@@ -23,26 +23,26 @@ jobs:
 #         cache: 'npm'
 #     - run: npm ci
 #     - run: npm test
-#   updateAPIDefinitions:
-#     runs-on: ubuntu-latest
-#     needs: [build]
-#     steps:
-#     - run: mkdir -p ~/oai_definitions/json
-#     - run: cd ~/oai_definitions
-#     - run: pwd
-#     - run: ls
-#     - uses: actions/checkout@v2
-#       with:
-#         repository: 'LakshmiRavali/twilio-oai'
-#         token:  ${{ secrets.OAI_TOKEN }}
-#     - run: |
-#         cp -R spec/json/. ~/oai_definitions/json/
-#         cp -R CHANGES.md ~/oai_definitions/CHANGES.md
-#     - uses: actions/checkout@v2
-#     - name: Update OAI folder
-#       run: |
-#         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
-#         bash scripts/updateApiDefinitions.sh
+  updateAPIDefinitions:
+    runs-on: ubuntu-latest
+    steps:
+    - run: mkdir -p ~/oai_definitions/json
+    - run: cd ~/oai_definitions
+    - run: pwd
+    - run: ls
+    - uses: actions/checkout@v2
+      with:
+        repository: 'LakshmiRavali/twilio-oai'
+        token:  ${{ secrets.OAI_TOKEN }}
+    - run: |
+        cp -R spec/json/. ~/oai_definitions/json/
+        cp -R CHANGES.md ~/oai_definitions/CHANGES.md
+    - uses: actions/checkout@v2
+    - name: Update OAI folder
+      run: |
+        cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+        bash scripts/updateApiDefinitions.sh
+        echo ${{env.CHANGE_LOG}}
 #   release:
 #     runs-on: ubuntu-latest
 #     needs: [updateAPIDefinitions]
@@ -62,31 +62,31 @@ jobs:
 #     - run: npm ci && npx semantic-release -t \${version}
 #       env:
 #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  updateRelease:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x]
+#   updateRelease:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [10.x]
 #     needs: [release]
-    steps:       
-      - uses: actions/checkout@v2
-      - run: git fetch --tags
-      - name: Getting tag
-        id: test
-        run: |
-          echo "::set-output name=TAG_NAME::$(git describe --tags $(git rev-list --tags --max-count=1))"
-          echo "::set-output name=CHANGE_LOG::$(node scripts/update-api-definitions.js)"
-      - run: echo "${{steps.test.outputs.TAG_NAME}}"
-      - run: echo "${{steps.test.outputs.CHANGE_LOG}}"
-      - name: update release
-        id: update_release
-        uses: tubone24/update_release@v1.2.0
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{steps.test.outputs.TAG_NAME}}
-        with:
-          is_append_body: true
-          body: "Testing append new" # new body text
+#     steps:       
+#       - uses: actions/checkout@v2
+#       - run: git fetch --tags
+#       - name: Getting tag
+#         id: test
+#         run: |
+#           echo "::set-output name=TAG_NAME::$(git describe --tags $(git rev-list --tags --max-count=1))"
+#           echo "::set-output name=CHANGE_LOG::$(node scripts/update-api-definitions.js)"
+#       - run: echo "${{steps.test.outputs.TAG_NAME}}"
+#       - run: echo "${{steps.test.outputs.CHANGE_LOG}}"
+#       - name: update release
+#         id: update_release
+#         uses: tubone24/update_release@v1.2.0
+#         env:
+#           GITHUB_TOKEN: ${{ github.token }}
+#           TAG_NAME: ${{steps.test.outputs.TAG_NAME}}
+#         with:
+#           is_append_body: true
+#           body: "Testing append new" # new body text
         
 #   build:
 
