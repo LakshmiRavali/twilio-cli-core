@@ -2,7 +2,8 @@
 echo "Copying api-definitions"
 # cp -R ~/oai_definitions/json/. src/services/twilio-api/
 # echo "Running update changelog script"
-changeLog="**Api**
+read -r -d '' changeLog << EOM
+**Api**
 - Corrected the `price`, `call_sid_to_coach`, and `uri` data types for Conference, Participant, and Recording **(breaking change)**
 - Made documentation for property `time_limit` in the call api public. **(breaking change)**
 - Added `domain_sid` in sip_credential_list_mapping and sip_ip_access_control_list_mapping APIs **(breaking change)**
@@ -20,7 +21,8 @@ changeLog="**Api**
 
 **Verify**
 - Add `TemplateSid` optional parameter on Verification creation.
-- Include `whatsapp` as a channel type in the verifications API."
+- Include `whatsapp` as a channel type in the verifications API.
+EOM
 echo $changeLog
 echo "::set-output name=changeLogStatus::$changeLog"
 # versionType=$(node scripts/get-version-type.js)
