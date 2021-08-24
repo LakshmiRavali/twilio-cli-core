@@ -8,63 +8,66 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+#   build:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [10.x]
+#     steps:
+#     - uses: actions/checkout@v2
+#     - run: npm install
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#         cache: 'npm'
+#     - run: npm ci
+#     - run: npm test
+#   updateAPIDefinitions:
+#     runs-on: ubuntu-latest
+#     needs: [build]
+#     steps:
+#     - run: mkdir -p ~/oai_definitions/json
+#     - run: cd ~/oai_definitions
+#     - run: pwd
+#     - run: ls
+#     - uses: actions/checkout@v2
+#       with:
+#         repository: 'LakshmiRavali/twilio-oai'
+#         token:  ${{ secrets.OAI_TOKEN }}
+#     - run: |
+#         cp -R spec/json/. ~/oai_definitions/json/
+#         cp -R CHANGES.md ~/oai_definitions/CHANGES.md
+#     - uses: actions/checkout@v2
+#     - name: Update OAI folder
+#       run: |
+#         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+#         bash scripts/updateApiDefinitions.sh
+#   release:
+#     runs-on: ubuntu-latest
+#     needs: [updateAPIDefinitions]
+#     steps:
+#     - uses: actions/checkout@v2
+#     - run: git pull origin test_branch
+#     - run: git branch
+#     - run: git log -3
+#     - run: npm install
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#         cache: 'npm'
+#     - name: semanticRelease
+#       run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+#     - run: npm ci && npx semantic-release -t \${version}
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  updateRelease:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [10.x]
-    steps:
-    - uses: actions/checkout@v2
-    - run: npm install
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm test
-  updateAPIDefinitions:
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
-    - run: mkdir -p ~/oai_definitions/json
-    - run: cd ~/oai_definitions
-    - run: pwd
-    - run: ls
-    - uses: actions/checkout@v2
-      with:
-        repository: 'LakshmiRavali/twilio-oai'
-        token:  ${{ secrets.OAI_TOKEN }}
-    - run: |
-        cp -R spec/json/. ~/oai_definitions/json/
-        cp -R CHANGES.md ~/oai_definitions/CHANGES.md
-    - uses: actions/checkout@v2
-    - name: Update OAI folder
-      run: |
-        cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
-        bash scripts/updateApiDefinitions.sh
-  release:
-    runs-on: ubuntu-latest
-    needs: [updateAPIDefinitions]
-    steps:
-    - uses: actions/checkout@v2
-    - run: git pull origin test_branch
-    - run: git branch
-    - run: git log -3
-    - run: npm install
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: semanticRelease
-      run: npm install --save-dev @semantic-release/changelog @semantic-release/git
-    - run: npm ci && npx semantic-release -t \${version}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  updateRelease:
-    runs-on: ubuntu-latest
-    needs: [release]
+#     needs: [release]
     steps:       
       - uses: actions/checkout@v2
       - run: git fetch --tags
@@ -72,7 +75,9 @@ jobs:
         id: test
         run: |
           echo "::set-output name=TAG_NAME::$(git describe --tags $(git rev-list --tags --max-count=1))"
+          echo "::set-output name=CHANGE_LOG::$(node scripts/update-api-definitions.js)"
       - run: echo "${{steps.test.outputs.TAG_NAME}}"
+      - run: echo "${{steps.test.outputs.CHANGE_LOG}}"
       - name: update release
         id: update_release
         uses: tubone24/update_release@v1.2.0
