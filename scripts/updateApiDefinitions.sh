@@ -8,7 +8,7 @@ read -r -d '' changeLog <<- EOM
     Line 3.
 EOM
 echo $changeLog
-echo ::set-output name=changeLogStatus::"$changeLog"
+echo "::set-output name=changeLogStatus::$changeLog"
 # versionType=$(node scripts/get-version-type.js)
 # echo "Version type: $versionType"
 # rm -rf OAI_CHANGES.md
