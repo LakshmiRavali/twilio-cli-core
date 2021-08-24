@@ -7,12 +7,12 @@ read -r -d '' changeLog <<- EOM
     This is line 2.
     Line 3.
 EOM
-echo "changeLog<<EOF" >> $GITHUB_ENV
-          echo "$changeLog" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-# changeLog="${changeLog//'%'/'%25'}"
-# changeLog="${changeLog//$'\n'/'%0A'}"
-# changeLog="${changeLog//$'\r'/'%0D'}"
+# echo "changeLog<<EOF" >> $GITHUB_ENV
+#           echo "$changeLog" >> $GITHUB_ENV
+#           echo "EOF" >> $GITHUB_ENV
+changeLog="${changeLog//'%'/'%25'}"
+changeLog="${changeLog//$'\n'/'%0A'}"
+changeLog="${changeLog//$'\r'/'%0D'}"
 echo $changeLog
 echo "::set-output name=changeLogStatus::$changeLog"
 # versionType=$(node scripts/get-version-type.js)
