@@ -71,7 +71,7 @@ class ChangeLogHelper {
     return fileData;
   }
 
-  async appendChangesToChangelog() {
+  async appendAndGetChangesToChangelog() {
     const latestDate = await this.getLatestChangelogGeneratedDate(); // changes.md
     if (latestDate) {
       const changeLog = await this.getChangesAfterGivenDate(latestDate); // oai_changes.md
@@ -84,12 +84,10 @@ class ChangeLogHelper {
         fs.close(fd, (err) => {
           if (err) throw err;
         });
-      } else {
-        // console.log('No changes to write');
+        return changeLog;
       }
-    } else {
-      // console.log('No latest date found');
     }
+    return '';
   }
 
   async getReadLiner(filename) {
