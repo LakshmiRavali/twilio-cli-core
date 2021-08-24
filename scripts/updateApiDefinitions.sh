@@ -23,12 +23,7 @@ second line
 third line
 EOF
 )
-$FOO_STEP = $(cat << EOF
-first line
-second line
-third line
-EOF
-)
+echo "FOO_STEP=$changeLog" >> $GITHUB_ENV
 echo "changeLog<<EOF" >> $GITHUB_ENV
 echo "$changeLog" >> $GITHUB_ENV
 echo "EOF" >> $GITHUB_ENV
