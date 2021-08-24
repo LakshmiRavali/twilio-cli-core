@@ -10,9 +10,9 @@ EOM
 echo "changeLog<<EOF" >> $GITHUB_ENV
           echo "$changeLog" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
-changeLog="${changeLog//'%'/'%25'}"
-changeLog="${changeLog//$'\n'/'%0A'}"
-changeLog="${changeLog//$'\r'/'%0D'}"
+# changeLog="${changeLog//'%'/'%25'}"
+# changeLog="${changeLog//$'\n'/'%0A'}"
+# changeLog="${changeLog//$'\r'/'%0D'}"
 echo $changeLog
 echo "::set-output name=changeLogStatus::$changeLog"
 # versionType=$(node scripts/get-version-type.js)
