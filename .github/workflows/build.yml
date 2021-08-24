@@ -68,8 +68,8 @@ jobs:
 #           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 #           repository: ${{ matrix.repo }}
 #           event-type: releaseCli
-  updateAPIDefinitions:
-    runs-on: ubuntu-latest
+#   updateAPIDefinitions:
+#     runs-on: ubuntu-latest
 #     steps:
 #     - run: echo $SHELL
 #     - name: Checkout
@@ -92,21 +92,21 @@ jobs:
 #     - run: mkdir -p csarath/hello
 #     - run: cp -RT spec/json/ csarath/hello/
 #     - run: ls -ltr csarath/hello
-    steps:
-    - run: mkdir -p ~/oai_definitions/json
-    - run: cd ~/oai_definitions
-    - run: pwd
-    - run: ls
-    - uses: actions/checkout@v2
-      with:
-        repository: 'LakshmiRavali/twilio-oai'
-        token:  ${{ secrets.OAI_TOKEN }}
-    - run: |
-        cp -R spec/json/. ~/oai_definitions/json/
-        cp -R CHANGES.md ~/oai_definitions/CHANGES.md
-    - uses: actions/checkout@v2
-    - name: Update OAI folder
-      run: |
-        cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
-        bash scripts/updateApiDefinitions.sh
+#     steps:
+#     - run: mkdir -p ~/oai_definitions/json
+#     - run: cd ~/oai_definitions
+#     - run: pwd
+#     - run: ls
+#     - uses: actions/checkout@v2
+#       with:
+#         repository: 'LakshmiRavali/twilio-oai'
+#         token:  ${{ secrets.OAI_TOKEN }}
+#     - run: |
+#         cp -R spec/json/. ~/oai_definitions/json/
+#         cp -R CHANGES.md ~/oai_definitions/CHANGES.md
+#     - uses: actions/checkout@v2
+#     - name: Update OAI folder
+#       run: |
+#         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+#         bash scripts/updateApiDefinitions.sh
         
