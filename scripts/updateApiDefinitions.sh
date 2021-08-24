@@ -23,6 +23,9 @@ second line
 third line
 EOF
 )
+changeLog="${changeLog//'%'/'%25'}"
+changeLog="${changeLog//$'\n'/'%0A'}"
+changeLog="${changeLog//$'\r'/'%0D'}"
 echo "FOO_STEP=$changeLog" >> $GITHUB_ENV
 echo "changeLog<<EOF" >> $GITHUB_ENV
 echo "$changeLog" >> $GITHUB_ENV
