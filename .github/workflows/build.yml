@@ -44,6 +44,22 @@ jobs:
         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
         bash scripts/updateApiDefinitions.sh
     - run: echo ${{steps.updateFolder.outputs.changeLog}}
+    - name: create string
+      run: |
+        MY_STRING=$(cat << EOF
+        first line
+        second line
+        third line
+        EOF
+        )
+        MY_STRING="${MY_STRING//'%'/'%25'}"
+        MY_STRING="${MY_STRING//$'\n'/'%0A'}"
+        MY_STRING="${MY_STRING//$'\r'/'%0D'}"
+        echo "::set-output name=content::$MY_STRING"
+      id: my_string
+    - name: display string
+      run: |
+        echo "The string is: ${{ steps.my_string.outputs.content }}"
 #   release:
 #     runs-on: ubuntu-latest
 #     needs: [updateAPIDefinitions]
