@@ -13,8 +13,7 @@ EOM
 changeLog="${changeLog//'%'/'%25'}"
 changeLog="${changeLog//$'\n'/'%0A'}"
 changeLog="${changeLog//$'\r'/'%0D'}"
-echo $changeLog
-echo "::set-output name=changeLogStatus::$changeLog"
+echo "::set-output name=changeLog::$changeLog"
 # versionType=$(node scripts/get-version-type.js)
 # echo "Version type: $versionType"
 # rm -rf OAI_CHANGES.md
