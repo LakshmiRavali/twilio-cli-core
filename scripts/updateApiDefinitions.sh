@@ -2,8 +2,8 @@
 echo "Copying api-definitions"
 cp -R ~/oai_definitions/json/. src/services/twilio-api/
 echo "Running update changelog script"
-changeLog = $(node scripts/update-api-definitions.js)
-export CHANGE_LOG = $changeLog
+changeLog=$(node scripts/update-api-definitions.js)
+export CHANGE_LOG=$changeLog
 echo $CHANGE_LOG
 versionType=$(node scripts/get-version-type.js)
 echo "Version type: $versionType"
