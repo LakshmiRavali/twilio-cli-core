@@ -43,7 +43,9 @@ jobs:
       run: |
         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
         bash scripts/updateApiDefinitions.sh
-    - run: echo ${{env.changeLog}}
+      env:
+          FOO_STEP: bar on step
+    - run: echo ${{env.FOO_STEP}}
     - name: create string
       run: |
         MY_STRING=$(cat << EOF
