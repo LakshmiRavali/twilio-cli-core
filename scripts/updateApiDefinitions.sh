@@ -10,10 +10,13 @@ EOM
 # echo "changeLog<<EOF" >> $GITHUB_ENV
 #           echo "$changeLog" >> $GITHUB_ENV
 #           echo "EOF" >> $GITHUB_ENV
-changeLog="${changeLog//'%'/'%25'}"
-changeLog="${changeLog//$'\n'/'%0A'}"
-changeLog="${changeLog//$'\r'/'%0D'}"
-echo "::set-output name=changeLog::$changeLog"
+# changeLog="${changeLog//'%'/'%25'}"
+# changeLog="${changeLog//$'\n'/'%0A'}"
+# changeLog="${changeLog//$'\r'/'%0D'}"
+# echo "::set-output name=changeLog::$changeLog"
+echo "::set-output name=changeLog eof=EOF::"
+echo "$changeLog"
+echo "EOF"
 # versionType=$(node scripts/get-version-type.js)
 # echo "Version type: $versionType"
 # rm -rf OAI_CHANGES.md
