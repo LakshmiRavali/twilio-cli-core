@@ -1,3 +1,27 @@
+# [6.0.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.27.1...6.0.0) (2021-08-25)
+
+
+### Bug Fixes
+
+* Created config file for semantic release ([b372756](https://github.com/LakshmiRavali/twilio-cli-core/commit/b3727567d4d3eba7f8d134cb66356ecc08d04032))
+* Updated package.json ([553844d](https://github.com/LakshmiRavali/twilio-cli-core/commit/553844d6dc70d73b26f2977a567523de152c2296))
+* Updated workflow ([cdb7a69](https://github.com/LakshmiRavali/twilio-cli-core/commit/cdb7a694590668ec2669c647e29ac1fab40a8351))
+
+
+### Features
+
+* Added changeLog script file ([7b5cfda](https://github.com/LakshmiRavali/twilio-cli-core/commit/7b5cfdac0685910a63d60d4fee1fe151e4bc94f2))
+* Added the version script of twilio oai ([74e2509](https://github.com/LakshmiRavali/twilio-cli-core/commit/74e2509e980700d1bfa2f6246255f5ec06eef726))
+* Added the workflow file ([3b0996a](https://github.com/LakshmiRavali/twilio-cli-core/commit/3b0996a428a97e5a3efc66a043007b5903ab0beb))
+* Added updated api definition script ([525f817](https://github.com/LakshmiRavali/twilio-cli-core/commit/525f817c49f3679a6af93fb36b41dd97dd92d9c1))
+* Shell script to execute update api definitions and changelog. ([c631fa8](https://github.com/LakshmiRavali/twilio-cli-core/commit/c631fa8fd50e815b1a3346bc6be1d342741650c8))
+* Updated api definitions ([fda3f90](https://github.com/LakshmiRavali/twilio-cli-core/commit/fda3f90d53b8891257f2c39b0119ef7805849fb8))
+
+
+### BREAKING CHANGES
+
+* Release notes updated with api definitions
+
 ---------------------------
 **Api**
 - Corrected the `price`, `call_sid_to_coach`, and `uri` data types for Conference, Participant, and Recording **(breaking change)**
