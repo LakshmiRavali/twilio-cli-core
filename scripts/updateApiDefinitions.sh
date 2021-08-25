@@ -14,7 +14,7 @@ rm -rf OAI_CHANGES.md
 echo "Git configurations"
 git config --global user.email "lakshmiravali.rimmalapudi@gmail.com"
 git config --global user.name "lakshmiravali"
-branch=${git branch)
+branch=$(git branch)
 echo "Current branch: $branch"
 git add .
 commitMessage=''
