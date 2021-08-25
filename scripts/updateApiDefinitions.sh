@@ -14,11 +14,13 @@ rm -rf OAI_CHANGES.md
 echo "Git configurations"
 git config --global user.email "lakshmiravali.rimmalapudi@gmail.com"
 git config --global user.name "lakshmiravali"
+branch=${git branch)
+echo "Current branch: $branch"
 git add .
 commitMessage=''
 if [ $versionType == 0 ] || [ $versionType == 1 ]
 then
-  commitMessage='feat: Updated api definitions'
+  commitMessage='doc: Updated api definitions'
 elif [ $versionType == 2 ]
 then
   commitMessage='fix: Updated api definitions'
@@ -27,4 +29,4 @@ else
 fi
 echo "Commit message:$commitMessage"
 git commit -m "$commitMessage"
-git push origin test_branch_actions
+git push origin $branch
