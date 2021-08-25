@@ -2,8 +2,16 @@
 const fs = require('fs');
 const readline = require('readline');
 
+const defaultVersionRegex = /(\d+)\.(\d+)\.(\d+)/;
+const defaultDateRegex = /\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/;
+
 class ChangeLogHelper {
-  constructor(versionRegex, dateRegex, cliCoreChangelogFilename, oaiChangelogFilename) {
+  constructor(
+    cliCoreChangelogFilename,
+    oaiChangelogFilename,
+    versionRegex = defaultVersionRegex,
+    dateRegex = defaultDateRegex,
+  ) {
     this.versionRegex = versionRegex;
     this.dateRegex = dateRegex;
     this.cliCoreChangelogFilename = cliCoreChangelogFilename;
@@ -71,7 +79,7 @@ class ChangeLogHelper {
     return fileData;
   }
 
-  async appendAndGetChangesToChangelog() {
+  async getAndAppendChangesToChangelog() {
     const latestDate = await this.getLatestChangelogGeneratedDate(); // changes.md
     if (latestDate) {
       const changeLog = await this.getChangesAfterGivenDate(latestDate); // oai_changes.md
@@ -92,10 +100,9 @@ class ChangeLogHelper {
 
   async getReadLiner(filename) {
     const fileStream = fs.createReadStream(filename);
-    const rl = readline.createInterface({
+    return readline.createInterface({
       input: fileStream,
     });
-    return rl;
   }
 }
 module.exports = {
