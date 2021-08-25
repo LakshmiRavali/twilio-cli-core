@@ -1,3 +1,10 @@
+## [5.28.1](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.28.0...5.28.1) (2021-08-25)
+
+
+### Bug Fixes
+
+* Code refactoring ([df523a2](https://github.com/LakshmiRavali/twilio-cli-core/commit/df523a21692bbe4b8ddd876a977a81d2206ad73d))
+
 # [5.28.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.27.1...5.28.0) (2021-08-25)
 
 
