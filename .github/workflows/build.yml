@@ -27,6 +27,9 @@ jobs:
     - run: npm test
   updateAPIDefinitions:
     runs-on: ubuntu-latest
+    needs: [build]
+    outputs:
+      changeLog: ${{ steps.updateFolder.outputs.changeLog }}
     steps:
     - run: mkdir -p ~/oai_definitions/json
     - run: cd ~/oai_definitions
@@ -44,7 +47,8 @@ jobs:
       id: updateFolder
       run: |
         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
-        bash scripts/updateApiDefinitions.sh
+        source scripts/updateApiDefinitions.sh
+        echo "::set-output name=changeLog::$changeLog"
   release:
     runs-on: ubuntu-latest
     needs: [updateAPIDefinitions]
@@ -69,7 +73,7 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x]
-    needs: [release]
+    needs: [updateAPIDefinitions, release]
     steps:       
       - uses: actions/checkout@v2
       - run: git fetch --tags
@@ -77,9 +81,7 @@ jobs:
         id: test
         run: |
           echo "::set-output name=TAG_NAME::$(git describe --tags $(git rev-list --tags --max-count=1))"
-          echo "::set-output name=CHANGE_LOG::$(node scripts/update-api-definitions.js)"
       - run: echo "${{steps.test.outputs.TAG_NAME}}"
-      - run: echo "${{steps.test.outputs.CHANGE_LOG}}"
       - name: update release
         id: update_release
         uses: tubone24/update_release@v1.2.0
@@ -88,4 +90,4 @@ jobs:
           TAG_NAME: ${{steps.test.outputs.TAG_NAME}}
         with:
           is_append_body: true
-          body: ${{env.CHANGE_LOG}} # new body text
+          body: ${{needs.updateAPIDefinitions.outputs.changeLog}}
