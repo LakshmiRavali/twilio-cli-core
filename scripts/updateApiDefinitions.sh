@@ -2,14 +2,16 @@
 echo "Copying api-definitions"
 cp -R ~/oai_definitions/json/. src/services/twilio-api/
 echo "Running update changelog script"
-changeLog=$(node scripts/update-api-definitions.js)
+node update-api-definitions.js
+changeLog=$(cat changeLog.md)
+rm -rf changeLog.md
 if [ "$changeLog" != '' ]; then
   changeLog="${changeLog//'%'/'%25'}"
   changeLog="${changeLog//$'\n'/'%0A'}"
   changeLog="${changeLog//$'\r'/'%0D'}"
 fi
 echo "Changelog: $changeLog"
-versionType=$(node scripts/get-version-type.js)
+versionType=$(node scripts/get-version-type.js | tail -n -1)
 echo "Version type: $versionType"
 rm -rf OAI_CHANGES.md
 echo "Git configurations"

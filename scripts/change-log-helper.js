@@ -21,7 +21,7 @@ class ChangeLogHelper {
   }
 
   async getAllReleaseVersionsFromGivenDate(date) {
-    this.logger.debug(`Started detecting the versions from the date: ${date}`);
+    this.logger.info(`Started detecting the versions from the date: ${date}`);
     const versions = [];
     const readLine = await this.getReadLiner(this.oaiChangelogFilename);
     for await (const line of readLine) {
@@ -36,19 +36,19 @@ class ChangeLogHelper {
         }
       }
     }
-    this.logger.debug(`Detected Versions: ${versions}`);
+    this.logger.info(`Detected Versions: ${versions}`);
     return versions;
   }
 
   async getLatestChangelogGeneratedDate() {
-    this.logger.debug('Started detecting the latest date in cli core changelog');
+    this.logger.info('Started detecting the latest date in cli core changelog');
     let latestDate;
     const readLine = await this.getReadLiner(this.cliCoreChangelogFilename);
     for await (const line of readLine) {
       latestDate = this.dateRegex.exec(line);
       if (latestDate) {
         latestDate = latestDate[0];
-        this.logger.debug(`Detected the latest Date: ${latestDate}`);
+        this.logger.info(`Detected the latest Date: ${latestDate}`);
         break;
       }
     }
@@ -56,7 +56,7 @@ class ChangeLogHelper {
   }
 
   async getChangesAfterGivenDate(date) {
-    this.logger.debug(`Started getting the changelog from given date: ${date}`);
+    this.logger.info(`Started getting the changelog from given date: ${date}`);
     let readLines = false;
     let fileData = '';
     const readLine = await this.getReadLiner(this.oaiChangelogFilename);
@@ -64,10 +64,10 @@ class ChangeLogHelper {
       const currentDate = this.dateRegex.exec(line);
       if (currentDate) {
         if (currentDate[0] > date) {
-          this.logger.debug('Reading the lines');
+          this.logger.info('Reading the lines');
           readLines = true;
         } else {
-          this.logger.debug(`Changes from OpenAPI specs: ${fileData}`);
+          this.logger.info(`Changes from OpenAPI specs: ${fileData}`);
           break;
         }
       } else if (readLines) {
@@ -78,13 +78,13 @@ class ChangeLogHelper {
   }
 
   async getAndAppendChangesToChangelog() {
-    this.logger.debug('Started getAndAppendChangesToChangelog');
+    this.logger.info('Started getAndAppendChangesToChangelog');
     const latestDate = await this.getLatestChangelogGeneratedDate(); // changes.md
     if (latestDate) {
       const changeLog = await this.getChangesAfterGivenDate(latestDate); // oai_changes.md
       if (changeLog) {
         try {
-          this.logger.debug('Updating the CHANGES.md');
+          this.logger.info('Updating the CHANGES.md');
           const data = fs.readFileSync(this.cliCoreChangelogFilename);
           const fd = fs.openSync(this.cliCoreChangelogFilename, 'w+');
           const insert = Buffer.from(changeLog);
@@ -93,6 +93,7 @@ class ChangeLogHelper {
           fs.close(fd, (err) => {
             if (err) throw err;
           });
+          fs.writeFileSync('changeLog.md', changeLog);
         } catch (error) {
           this.logger.error(`Error while updating the changelog: ${error}`);
         }

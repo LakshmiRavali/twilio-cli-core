@@ -16,5 +16,5 @@ const getVersionType = async () => {
   return -1;
 };
 (async () => {
-  console.log(await getVersionType());
+  return getVersionType();
 })();
