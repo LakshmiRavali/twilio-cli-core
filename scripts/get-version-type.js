@@ -4,10 +4,11 @@ const { ChangeLogHelper } = require('./change-log-helper');
 const ch = new ChangeLogHelper('CHANGES.md', 'OAI_CHANGES.md');
 
 const getVersionType = async () => {
-  const versions = await ch.getFirstTwoVersions();
-  if (versions.length === 2) {
+  const latestDate = await ch.getLatestChangelogGeneratedDate();
+  const versions = await ch.getAllReleaseVersionsFromGivenDate(latestDate);
+  if (versions.length >= 2) {
     const version1 = versions[0].split('.');
-    const version2 = versions[1].split('.');
+    const version2 = versions[versions.length - 1].split('.');
     for (let i = 0; i < 3; i++) {
       if (version1[i] !== version2[i]) return i;
     }
