@@ -2,7 +2,7 @@
 echo "Copying api-definitions"
 cp -R ~/oai_definitions/json/. src/services/twilio-api/
 echo "Running update changelog script"
-node update-api-definitions.js
+node scripts/update-api-definitions.js
 changeLog=$(cat changeLog.md)
 rm -rf changeLog.md
 if [ "$changeLog" != '' ]; then
