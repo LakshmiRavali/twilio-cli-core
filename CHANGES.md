@@ -1,3 +1,12 @@
+## [5.28.2](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.28.1...5.28.2) (2021-08-26)
+
+
+### Bug Fixes
+
+* Getting the versions based on the given date ([311d0fc](https://github.com/LakshmiRavali/twilio-cli-core/commit/311d0fc2d13484bf3582641680f29da593b4a339))
+* Release enabled ([b8a361b](https://github.com/LakshmiRavali/twilio-cli-core/commit/b8a361b0f2e3e8d6ffff8a0089244bd56ce8368c))
+* update ([14b7edb](https://github.com/LakshmiRavali/twilio-cli-core/commit/14b7edbadd95b4b8f3139400cbf9084b105b05c5))
+
 ## [5.28.1](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.28.0...5.28.1) (2021-08-25)
 
 
