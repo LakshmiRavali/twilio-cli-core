@@ -49,6 +49,7 @@ jobs:
 #         echo "::set-output name=changeLog::$(git branch --show-current)"
 #     - run: echo ${{ steps.updateFolder.outputs.changeLog}}
       run: |
+        npm install
         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
         source scripts/updateApiDefinitions.sh
         echo "::set-output name=changeLog::$changeLog"
