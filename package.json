@@ -44,6 +44,8 @@
   },
   "devDependencies": {
     "@oclif/test": "^1.2.6",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@twilio/cli-test": "^2.1.0",
     "chai": "^4.2.0",
     "eslint": "^7.5.0",
@@ -88,7 +90,10 @@
       [
         "@semantic-release/git",
         {
-          "assets": ["CHANGES.md", "package.json"],
+          "assets": [
+            "CHANGES.md",
+            "package.json"
+          ],
           "message": "chore(release): set `package.json` to ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
         }
       ]

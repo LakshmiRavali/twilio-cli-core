@@ -8,6 +8,7 @@ if [ "$changeLog" != '' ]; then
   changeLog="${changeLog//$'\n'/'%0A'}"
   changeLog="${changeLog//$'\r'/'%0D'}"
 fi
+echo "Changelog: $changeLog"
 versionType=$(node scripts/get-version-type.js)
 echo "Version type: $versionType"
 rm -rf OAI_CHANGES.md
@@ -34,5 +35,5 @@ if [ -n "$(git status --porcelain)" ]; then
   git commit -m "$commitMessage"
   git push origin "$branch"
 else
-  echo "No OpenAPI changes to commit";
+  echo "No changes to commit";
 fi

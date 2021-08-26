@@ -31,63 +31,66 @@ jobs:
     outputs:
       changeLog: ${{ steps.updateFolder.outputs.changeLog }}
     steps:
-    - run: mkdir -p ~/oai_definitions/json
-    - run: cd ~/oai_definitions
-    - run: pwd
-    - run: ls
-    - uses: actions/checkout@v2
-      with:
-        repository: 'LakshmiRavali/twilio-oai'
-        token:  ${{ secrets.OAI_TOKEN }}
-    - run: |
-        cp -R spec/json/. ~/oai_definitions/json/
-        cp -R CHANGES.md ~/oai_definitions/CHANGES.md
+#     - run: mkdir -p ~/oai_definitions/json
+#     - run: cd ~/oai_definitions
+#     - run: pwd
+#     - run: ls
+#     - uses: actions/checkout@v2
+#       with:
+#         repository: 'LakshmiRavali/twilio-oai'
+#         token:  ${{ secrets.OAI_TOKEN }}
+#     - run: |
+#         cp -R spec/json/. ~/oai_definitions/json/
+#         cp -R CHANGES.md ~/oai_definitions/CHANGES.md
     - uses: actions/checkout@v2
     - name: Update OAI folder
       id: updateFolder
       run: |
-        cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
-        source scripts/updateApiDefinitions.sh
-        echo "::set-output name=changeLog::$changeLog"
-  release:
-    runs-on: ubuntu-latest
-    needs: [updateAPIDefinitions]
-    steps:
-    - uses: actions/checkout@v2
-    - run: git pull
-    - run: git branch
-    - run: git log -3
-    - run: npm install
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: semanticRelease
-      run: npm install --save-dev @semantic-release/changelog @semantic-release/git
-    - run: npm ci && npx semantic-release -t \${version}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  updateRelease:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x]
-    needs: [updateAPIDefinitions, release]
-    steps:       
-      - uses: actions/checkout@v2
-      - run: git fetch --tags
-      - name: Getting tag
-        id: test
-        run: |
-          echo "::set-output name=TAG_NAME::$(git describe --tags $(git rev-list --tags --max-count=1))"
-      - run: echo "${{steps.test.outputs.TAG_NAME}}"
-      - name: update release
-        id: update_release
-        uses: tubone24/update_release@v1.2.0
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{steps.test.outputs.TAG_NAME}}
-        with:
-          is_append_body: true
-          body: ${{needs.updateAPIDefinitions.outputs.changeLog}}
+        echo "::set-output name=changeLog::$(git branch --show-current)"
+    - run: echo ${{ steps.updateFolder.outputs.changeLog}}
+#       run: |
+#         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+#         source scripts/updateApiDefinitions.sh
+#         echo "::set-output name=changeLog::$changeLog"
+#   release:
+#     runs-on: ubuntu-latest
+#     needs: [updateAPIDefinitions]
+#     steps:
+#     - uses: actions/checkout@v2
+#     - run: git pull
+#     - run: git branch
+#     - run: git log -3
+#     - run: npm install
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v2
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#         cache: 'npm'
+#     - name: semanticRelease
+#       run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+#     - run: npm ci && npx semantic-release -t \${version}
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#   updateRelease:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [10.x]
+#     needs: [updateAPIDefinitions, release]
+#     steps:       
+#       - uses: actions/checkout@v2
+#       - run: git fetch --tags
+#       - name: Getting tag
+#         id: test
+#         run: |
+#           echo "::set-output name=TAG_NAME::$(git describe --tags $(git rev-list --tags --max-count=1))"
+#       - run: echo "${{steps.test.outputs.TAG_NAME}}"
+#       - name: update release
+#         id: update_release
+#         uses: tubone24/update_release@v1.2.0
+#         env:
+#           GITHUB_TOKEN: ${{ github.token }}
+#           TAG_NAME: ${{steps.test.outputs.TAG_NAME}}
+#         with:
+#           is_append_body: true
+#           body: ${{needs.updateAPIDefinitions.outputs.changeLog}}
