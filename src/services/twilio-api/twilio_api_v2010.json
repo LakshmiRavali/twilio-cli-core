@@ -2055,7 +2055,6 @@
           },
           "uri": {
             "description": "The URI of this resource, relative to `https://api.twilio.com`",
-            "format": "uri",
             "nullable": true,
             "type": "string"
           }
@@ -2128,7 +2127,7 @@
           "price": {
             "description": "The one-time cost of creating the recording.",
             "nullable": true,
-            "type": "number"
+            "type": "string"
           },
           "price_unit": {
             "description": "The currency used in the price property.",
@@ -2178,7 +2177,6 @@
           },
           "uri": {
             "description": "The URI of the resource, relative to `https://api.twilio.com`",
-            "format": "uri",
             "nullable": true,
             "type": "string"
           }
@@ -2208,7 +2206,7 @@
             "maxLength": 34,
             "minLength": 34,
             "nullable": true,
-            "pattern": "^CF[0-9a-fA-F]{32}$",
+            "pattern": "^CA[0-9a-fA-F]{32}$",
             "type": "string"
           },
           "coaching": {
@@ -2276,7 +2274,6 @@
           },
           "uri": {
             "description": "The URI of the resource, relative to `https://api.twilio.com`",
-            "format": "uri",
             "nullable": true,
             "type": "string"
           }
@@ -5579,6 +5576,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -5588,6 +5586,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -5905,6 +5904,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -5914,6 +5914,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -6231,6 +6232,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -6240,6 +6242,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -6557,6 +6560,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -6566,6 +6570,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -6883,6 +6888,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -6892,6 +6898,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -7209,6 +7216,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -7218,6 +7226,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -7535,6 +7544,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -7544,6 +7554,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -7861,6 +7872,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -7870,6 +7882,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -8187,6 +8200,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -8196,6 +8210,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -8595,6 +8610,7 @@
               "calls-sip",
               "calls-sip-inbound",
               "calls-sip-outbound",
+              "calls-transfers",
               "carrier-lookups",
               "conversations",
               "conversations-api-requests",
@@ -8604,6 +8620,7 @@
               "conversations-participant-events",
               "conversations-participants",
               "cps",
+              "flex-usage",
               "fraud-lookups",
               "group-rooms",
               "group-rooms-data-track",
@@ -8879,7 +8896,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Api",
-    "version": "5.27.1"
+    "version": "1.20.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -12654,6 +12671,10 @@
                     ],
                     "type": "string"
                   },
+                  "TimeLimit": {
+                    "description": "The maximum duration of the call in seconds. Constraints depend on account and configuration.",
+                    "type": "integer"
+                  },
                   "Timeout": {
                     "description": "The integer number of seconds that we should allow the phone to ring before assuming there is no answer. The default is `60` seconds and the maximum is `600` seconds. For some call flows, we will add a 5-second buffer to the timeout value you provide. For this reason, a timeout value of 10 seconds could result in an actual timeout closer to 15 seconds. You can set this to a short time, such as `15` seconds, to hang up before reaching an answering machine or voicemail.",
                     "type": "integer"
@@ -14348,6 +14369,10 @@
                     ],
                     "type": "string"
                   },
+                  "TimeLimit": {
+                    "description": "The maximum duration of the call in seconds. Constraints depend on account and configuration.",
+                    "type": "integer"
+                  },
                   "Twiml": {
                     "description": "TwiML instructions for the call Twilio will use without fetching Twiml from url. Twiml and url parameters are mutually exclusive",
                     "type": "string"
@@ -14920,6 +14945,10 @@
                       "DELETE"
                     ],
                     "type": "string"
+                  },
+                  "TimeLimit": {
+                    "description": "The maximum duration of the call in seconds. Constraints depend on account and configuration.",
+                    "type": "integer"
                   },
                   "Timeout": {
                     "description": "The number of seconds that we should allow the phone to ring before assuming there is no answer. Can be an integer between `5` and `600`, inclusive. The default value is `60`. We always add a 5-second timeout buffer to outgoing calls, so  value of 10 would result in an actual timeout that was closer to 15 seconds.",
@@ -26287,6 +26316,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -26296,6 +26326,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -26664,6 +26695,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -26673,6 +26705,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -27041,6 +27074,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -27050,6 +27084,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -27418,6 +27453,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -27427,6 +27463,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -27795,6 +27832,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -27804,6 +27842,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -28172,6 +28211,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -28181,6 +28221,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -28549,6 +28590,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -28558,6 +28600,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -28926,6 +28969,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -28935,6 +28979,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -29303,6 +29348,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -29312,6 +29358,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -29707,6 +29754,7 @@
                 "calls-sip",
                 "calls-sip-inbound",
                 "calls-sip-outbound",
+                "calls-transfers",
                 "carrier-lookups",
                 "conversations",
                 "conversations-api-requests",
@@ -29716,6 +29764,7 @@
                 "conversations-participant-events",
                 "conversations-participants",
                 "cps",
+                "flex-usage",
                 "fraud-lookups",
                 "group-rooms",
                 "group-rooms-data-track",
@@ -30087,6 +30136,7 @@
                       "calls-sip",
                       "calls-sip-inbound",
                       "calls-sip-outbound",
+                      "calls-transfers",
                       "carrier-lookups",
                       "conversations",
                       "conversations-api-requests",
@@ -30096,6 +30146,7 @@
                       "conversations-participant-events",
                       "conversations-participants",
                       "cps",
+                      "flex-usage",
                       "fraud-lookups",
                       "group-rooms",
                       "group-rooms-data-track",

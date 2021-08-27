@@ -767,7 +767,8 @@
             "enum": [
               "sms",
               "call",
-              "email"
+              "email",
+              "whatsapp"
             ],
             "nullable": true,
             "type": "string"
@@ -862,7 +863,8 @@
             "enum": [
               "sms",
               "call",
-              "email"
+              "email",
+              "whatsapp"
             ],
             "nullable": true,
             "type": "string"
@@ -1101,7 +1103,7 @@
     },
     "termsOfService": "https://www.twilio.com/legal/tos",
     "title": "Twilio - Verify",
-    "version": "5.27.1"
+    "version": "1.20.1"
   },
   "openapi": "3.0.1",
   "paths": {
@@ -1922,6 +1924,18 @@
                 "expired",
                 "approved",
                 "denied"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "The desired sort order of the Challenges list. One of `asc` or `desc` for ascending and descending respectively. Defaults to `asc`.",
+            "in": "query",
+            "name": "Order",
+            "schema": {
+              "enum": [
+                "asc",
+                "desc"
               ],
               "type": "string"
             }
