@@ -1,13 +1,16 @@
+
 name: Cli-core Build
 
 on:
-  repository_dispatch:
-    types: [ releaseCliCore ]
-  push:
-    branches: [ test_branch_actions ]
+#   repository_dispatch:
+#     types: [ releaseCliCore ]
+#   push:
+#     branches: [ test_branch_actions ]
   workflow_dispatch:
-env:
-  CHANGE_LOG: ''
+    inputs:
+      cliBranch:
+        description: 'Run workflow in the branch'
+        default: main
 
 jobs:
   build:
@@ -30,6 +33,7 @@ jobs:
     needs: [build]
     outputs:
       changeLog: ${{ steps.updateFolder.outputs.changeLog }}
+      versionType: ${{ steps.updateFolder.outputs.versionType }}
     steps:
     - run: mkdir -p ~/oai_definitions/json
     - run: cd ~/oai_definitions
@@ -53,6 +57,7 @@ jobs:
         cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
         source scripts/updateApiDefinitions.sh
         echo "::set-output name=changeLog::$changeLog"
+        echo "::set-output name=versionType::$versionType"
   release:
     runs-on: ubuntu-latest
     needs: [updateAPIDefinitions]
@@ -94,4 +99,16 @@ jobs:
           TAG_NAME: ${{steps.test.outputs.TAG_NAME}}
         with:
           is_append_body: true
-          body: ${{needs.updateAPIDefinitions.outputs.changeLog}}
+          body: "${{needs.updateAPIDefinitions.outputs.changeLog}}"
+  triggerCliWorkflow:
+      runs-on: ubuntu-latest
+      needs: [ updateAPIDefinitions, updateRelease ]
+      steps:
+      - name: Invoke CLI workflow with changelog
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: Cli Publish
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          repo: LakshmiRavali/twilio-cli
+          ref: "${{ github.event.inputs.cliBranch }}"
+          inputs: '{ "changeLog": ${{ toJSON(needs.updateAPIDefinitions.outputs.changeLog) }}, "versionType": "${{needs.updateAPIDefinitions.outputs.versionType}}" }'
