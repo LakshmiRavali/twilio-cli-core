@@ -1,114 +1,105 @@
-
-name: Cli-core Build
-
+name: Cli-core Release
 on:
-#   repository_dispatch:
-#     types: [ releaseCliCore ]
-#   push:
-#     branches: [ test_branch_actions ]
   workflow_dispatch:
     inputs:
-      cliBranch:
+      cli-branch:
         description: 'Run workflow in the branch'
         default: main
-
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [10.x]
     steps:
-    - uses: actions/checkout@v2
-    - run: npm install
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm test
-  updateAPIDefinitions:
+      - name: Checkout to cli-core repo
+      - uses: actions/checkout@v2
+      - run: npm install
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: Run tests
+        run: |
+          npm ci
+          npm test
+  update-api-specs:
     runs-on: ubuntu-latest
-    needs: [build]
+    needs: [test]
     outputs:
-      changeLog: ${{ steps.updateFolder.outputs.changeLog }}
-      versionType: ${{ steps.updateFolder.outputs.versionType }}
+      change-log: ${{ steps.update-specs.outputs.change-log }}
+      version-type: ${{ steps.update-specs.outputs.version-type }}
     steps:
-    - run: mkdir -p ~/oai_definitions/json
-    - run: cd ~/oai_definitions
-    - run: pwd
-    - run: ls
-    - uses: actions/checkout@v2
-      with:
-        repository: 'LakshmiRavali/twilio-oai'
-        token:  ${{ secrets.OAI_TOKEN }}
-    - run: |
-        cp -R spec/json/. ~/oai_definitions/json/
-        cp -R CHANGES.md ~/oai_definitions/CHANGES.md
-    - uses: actions/checkout@v2
-    - name: Update OAI folder
-      id: updateFolder
-#       run: |
-#         echo "::set-output name=changeLog::$(git branch --show-current)"
-#     - run: echo ${{ steps.updateFolder.outputs.changeLog}}
-      run: |
-        npm install
-        cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
-        source scripts/updateApiDefinitions.sh
-        echo "::set-output name=changeLog::$changeLog"
-        echo "::set-output name=versionType::$versionType"
+      - name: Create temporary folder for copying json files fom OAI repo
+      - run: mkdir -p ~/oai_definitions/json
+      - name: Checkout to OAI repo
+      - uses: actions/checkout@v2
+        with:
+          repository: 'LakshmiRavali/twilio-oai'
+          token:  ${{ secrets.OAI_TOKEN }}
+      - run: |
+          cp -R spec/json/. ~/oai_definitions/json/
+          cp -R CHANGES.md ~/oai_definitions/CHANGES.md
+      - name: Checkout to cli-core repo
+      - uses: actions/checkout@v2
+      - name: Update OAI specs
+        id: update-specs
+        run: |
+          npm install
+          cp -R ~/oai_definitions/CHANGES.md OAI_CHANGES.md
+          source scripts/updateApiDefinitions.sh
+          echo "::set-output name=change-log::$changeLog"
+          echo "::set-output name=version-type::$versionType"
   release:
     runs-on: ubuntu-latest
-    needs: [updateAPIDefinitions]
+    needs: [update-api-specs]
     steps:
-    - uses: actions/checkout@v2
-    - run: git pull
-    - run: git branch
-    - run: git log -3
-    - run: npm install
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: semanticRelease
-      run: npm install --save-dev @semantic-release/changelog @semantic-release/git
-    - run: npm ci && npx semantic-release -t \${version}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  updateRelease:
+      - name: Checkout to cli-core repo
+      - uses: actions/checkout@v2
+        run: |
+          git pull
+          npm install
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - name: semanticRelease
+        run: |
+          npm install --save-dev @semantic-release/changelog @semantic-release/git
+          npm ci && npx semantic-release -t \${version}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  update-release:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x]
-    needs: [updateAPIDefinitions, release]
-    steps:       
+    needs: [update-api-specs, release]
+    steps:
+      - name: Checkout to cli-core repo
       - uses: actions/checkout@v2
       - run: git fetch --tags
-      - name: Getting tag
-        id: test
+      - name: Getting latest tag
+        id: get-tag
         run: |
           echo "::set-output name=TAG_NAME::$(git describe --tags $(git rev-list --tags --max-count=1))"
-      - run: echo "${{steps.test.outputs.TAG_NAME}}"
-      - name: update release
-        id: update_release
+      - run: echo "${{steps.get-tag.outputs.TAG_NAME}}"
+      - name: Update release
         uses: tubone24/update_release@v1.2.0
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{steps.test.outputs.TAG_NAME}}
+          TAG_NAME: ${{steps.get-tag.outputs.TAG_NAME}}
         with:
           is_append_body: true
-          body: "${{needs.updateAPIDefinitions.outputs.changeLog}}"
+          body: ${{needs.update-api-specs.outputs.change-log}}
   triggerCliWorkflow:
-      runs-on: ubuntu-latest
-      needs: [ updateAPIDefinitions, updateRelease ]
-      steps:
-      - name: Invoke CLI workflow with changelog
+    runs-on: ubuntu-latest
+    needs: [ update-api-specs, update-release]
+    steps:
+      - name: Invoke CLI workflow with changelog and version-type
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: Cli Publish
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          workflow: Cli Release
+          token: ${{ secrets.CLI_ACCESS_TOKEN }}
           repo: LakshmiRavali/twilio-cli
-          ref: "${{ github.event.inputs.cliBranch }}"
-          inputs: '{ "changeLog": ${{ toJSON(needs.updateAPIDefinitions.outputs.changeLog) }}, "versionType": "${{needs.updateAPIDefinitions.outputs.versionType}}" }'
+          ref: ${{ github.event.inputs.cli-branch }}
+          inputs: '{ "changeLog": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-Type": "${{needs.update-api-specs.outputs.version-type}}" }'
