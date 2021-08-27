@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: Checkout to cli-core repo
       - uses: actions/checkout@v2
-        run: |
+      - run: |
           git pull
           npm install
       - name: Use Node.js ${{ matrix.node-version }}
