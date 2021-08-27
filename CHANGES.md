@@ -1,3 +1,30 @@
+# [5.28.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.27.1...5.28.0) (2021-08-27)
+
+
+### Bug Fixes
+
+* Added changes in package.json and Updated scriot file ([749a316](https://github.com/LakshmiRavali/twilio-cli-core/commit/749a3168046e66dcbd2475be28ae1fc5c16947b6))
+* Added console log back ([6673e2c](https://github.com/LakshmiRavali/twilio-cli-core/commit/6673e2cff519c5d5bc49e4072e9511e7abfafe76))
+* Added missing change ([be144a3](https://github.com/LakshmiRavali/twilio-cli-core/commit/be144a396fffe9114fd7157f2890da8c8d1841d0))
+* Added release step in workflow ([bbfe334](https://github.com/LakshmiRavali/twilio-cli-core/commit/bbfe3346319c72de542b5e0ee0f606b09af47a44))
+* Code refactoring ([a262359](https://github.com/LakshmiRavali/twilio-cli-core/commit/a2623596e7361ea1f85b6dadd66f13a0322f7d7b))
+* Corrected branch ([c573a2e](https://github.com/LakshmiRavali/twilio-cli-core/commit/c573a2e0a0ffb5f240842fa8a8dfc3ee94f4470d))
+* Created config file for semantic release ([b372756](https://github.com/LakshmiRavali/twilio-cli-core/commit/b3727567d4d3eba7f8d134cb66356ecc08d04032))
+* Updated package.json ([553844d](https://github.com/LakshmiRavali/twilio-cli-core/commit/553844d6dc70d73b26f2977a567523de152c2296))
+* Updated script with logger ([ec964c7](https://github.com/LakshmiRavali/twilio-cli-core/commit/ec964c750b77c6bd569334b1f42c392f7fbfbd36))
+* Updated with dynamic branch ([954a02d](https://github.com/LakshmiRavali/twilio-cli-core/commit/954a02d9f95a43fc808bd798354f6ffb792491e1))
+* Updated with dynamic branch ([7e8882b](https://github.com/LakshmiRavali/twilio-cli-core/commit/7e8882b208b2dfa1d7bff207b52f1935f291a60a))
+
+
+### Features
+
+* Added changeLog script file ([7b5cfda](https://github.com/LakshmiRavali/twilio-cli-core/commit/7b5cfdac0685910a63d60d4fee1fe151e4bc94f2))
+* Added the version script of twilio oai ([74e2509](https://github.com/LakshmiRavali/twilio-cli-core/commit/74e2509e980700d1bfa2f6246255f5ec06eef726))
+* Added the workflow file ([3b0996a](https://github.com/LakshmiRavali/twilio-cli-core/commit/3b0996a428a97e5a3efc66a043007b5903ab0beb))
+* Added updated api definition script ([525f817](https://github.com/LakshmiRavali/twilio-cli-core/commit/525f817c49f3679a6af93fb36b41dd97dd92d9c1))
+* Shell script to execute update api definitions and changelog. ([c631fa8](https://github.com/LakshmiRavali/twilio-cli-core/commit/c631fa8fd50e815b1a3346bc6be1d342741650c8))
+* Updated api definitions ([4ea913a](https://github.com/LakshmiRavali/twilio-cli-core/commit/4ea913a8d872e43f3d1446c21054b9aaa94c9d4e))
+
 ---------------------------
 **Api**
 - Add Programmabled Voice SIP Refer call transfers (`calls-transfers`) to usage records
