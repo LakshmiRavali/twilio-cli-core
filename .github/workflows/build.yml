@@ -68,7 +68,7 @@ jobs:
       - name: semanticRelease
         run: |
           npm install --save-dev @semantic-release/changelog @semantic-release/git
-          npm ci && npx semantic-release -t \${version}
+          npm ci && npx semantic-release -t \${version}-rc
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   update-release:
