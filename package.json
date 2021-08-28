@@ -65,9 +65,8 @@
   },
   "release": {
     "branches": [
-      "test_branch_actions",
       {
-        "name": "beta",
+        "name": "test_branch_actions",
         "prerelease": true
       }
     ],
