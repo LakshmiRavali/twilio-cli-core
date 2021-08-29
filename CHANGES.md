@@ -1,3 +1,15 @@
+## [5.28.1-rc.1](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.28.0...5.28.1-rc.1) (2021-08-29)
+
+
+### Bug Fixes
+
+* Added condition to check changeLog.md file exist or not ([7a9ba55](https://github.com/LakshmiRavali/twilio-cli-core/commit/7a9ba5597d921992d52d8e5907f57a51069dee80))
+* Dummy commit ([123074e](https://github.com/LakshmiRavali/twilio-cli-core/commit/123074eb37d792675e2b01b1e1f72b38c7b1ad19))
+* Removed rc from semantic release ([5877f22](https://github.com/LakshmiRavali/twilio-cli-core/commit/5877f2271a5e79ced1de02e58d422c0c16b5c722))
+* updated package.json with rc ([d8c94f9](https://github.com/LakshmiRavali/twilio-cli-core/commit/d8c94f9195f6775a0131a8530b401791a667b5fd))
+* Updated suffix version ([b98c93c](https://github.com/LakshmiRavali/twilio-cli-core/commit/b98c93c03ed2cc9cdf6b68e1afbb14df43b4471d))
+* Updated with pre release ([6de0d44](https://github.com/LakshmiRavali/twilio-cli-core/commit/6de0d44bd4902f35f9274ba547ce705251668da4))
+
 # [5.28.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.27.1...5.28.0) (2021-08-27)
 
 
