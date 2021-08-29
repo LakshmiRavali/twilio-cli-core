@@ -1,6 +1,6 @@
 {
   "name": "@twilio/cli-core",
-  "version": "5.28.0-rc",
+  "version": "5.28.0",
   "description": "Core functionality for the twilio-cli.",
   "keywords": [
     "twilio"
@@ -65,9 +65,10 @@
   },
   "release": {
     "branches": [
+      "main",
       {
         "name": "test_branch_actions",
-        "prerelease": true
+        "prerelease": "rc"
       }
     ],
     "plugins": [
