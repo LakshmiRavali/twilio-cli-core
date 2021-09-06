@@ -105,6 +105,10 @@
               {
                 "type": "test",
                 "section": "Library - Test"
+              },
+              {
+                "type": "docs",
+                "section": "Library - Docs"
               }
             ]
           }
