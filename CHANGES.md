@@ -1,3 +1,39 @@
+## [5.28.0-rc.1](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.27.1...5.28.0-rc.1) (2021-09-06)
+
+
+### Library - Features
+
+* Enable GitHub actions. ([01a4fc5](https://github.com/LakshmiRavali/twilio-cli-core/commit/01a4fc5be7fe0074b35e6b40997b54ed3301623d))
+
+
+### Library - Chores
+
+* Add none output and silent flag ([#139](https://github.com/LakshmiRavali/twilio-cli-core/issues/139)) ([d650f8e](https://github.com/LakshmiRavali/twilio-cli-core/commit/d650f8eff88bdfb3dc502b43d68802af614f1274))
+* Added chore in packge.json ([1ac1e4f](https://github.com/LakshmiRavali/twilio-cli-core/commit/1ac1e4fd061a3664f1e38cda56a847f20f5a94d9))
+* Added new changes ([0eac4e1](https://github.com/LakshmiRavali/twilio-cli-core/commit/0eac4e1dade67ff7ece0bea8ebfd2acdc1566ae4))
+* Cache processing step for Travis builds ([#145](https://github.com/LakshmiRavali/twilio-cli-core/issues/145)) ([33cc65d](https://github.com/LakshmiRavali/twilio-cli-core/commit/33cc65d82412c30f6c9aec40b2c79e43a80d459b))
+* Integrate with Sonarcloud ([#136](https://github.com/LakshmiRavali/twilio-cli-core/issues/136)) ([e88136d](https://github.com/LakshmiRavali/twilio-cli-core/commit/e88136d50b7f33c00f81bd0bfbf29e43f3d93294))
+* rotate sonarcloud token ([5423df6](https://github.com/LakshmiRavali/twilio-cli-core/commit/5423df6e6bd0cb836d9b176d47b174e98fa63b4c))
+* rotate sonarcloud token ([8de01c0](https://github.com/LakshmiRavali/twilio-cli-core/commit/8de01c00762051523b808e7a570590345a1bcbb1))
+* standardize User-Agent string: format and include more details ([#140](https://github.com/LakshmiRavali/twilio-cli-core/issues/140)) ([2a42604](https://github.com/LakshmiRavali/twilio-cli-core/commit/2a426045b935f6184bb445693eb3ed02f6a069c9))
+* Updated with conventional commit module ([d823860](https://github.com/LakshmiRavali/twilio-cli-core/commit/d82386067c00e4a7af98825daa982f85568f0fcc))
+
+
+### Library - Docs
+
+* Testing with docs and refactoring the code ([23b92cf](https://github.com/LakshmiRavali/twilio-cli-core/commit/23b92cffeb8bdfd2a740ccd2de71152080022df4))
+
+
+### Library - Test
+
+* Updated docs and test ([8a2fa1d](https://github.com/LakshmiRavali/twilio-cli-core/commit/8a2fa1da056c578c4df55bfd6096eaa63bc4dcec))
+
+
+### Library - Fixes
+
+* Added condition to deploy specific regex match tags ([#138](https://github.com/LakshmiRavali/twilio-cli-core/issues/138)) ([2b73c97](https://github.com/LakshmiRavali/twilio-cli-core/commit/2b73c97b71c782b4cc05c22668e8c6d838bff9e7))
+* Updated api definitions ([3b46c6e](https://github.com/LakshmiRavali/twilio-cli-core/commit/3b46c6e3a421c13a33797ce9668aedd12ef61c11))
+
 ---------------------------
 **Api**
 - Add Programmabled Voice SIP Refer call transfers (`calls-transfers`) to usage records
