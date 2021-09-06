@@ -77,7 +77,16 @@
           {"type": "chore", "release": "patch"}
         ]
       }],
-      "@semantic-release/release-notes-generator",
+      ["@semantic-release/release-notes-generator", {
+        "preset": "angular",
+        "presetConfig": {
+          "types": [
+            {"type": "feat", "section": "Library - Features"},
+            {"type": "fix", "section": "Library - Fixes"},
+            {"type": "chore", "section": "Library - Chores"}
+          ]
+        }
+      }],
       [
         "@semantic-release/changelog",
         {
