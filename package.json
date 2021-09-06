@@ -78,12 +78,16 @@
         ]
       }],
       ["@semantic-release/release-notes-generator", {
-        "preset": "angular",
+        "preset": "conventionalcommits",
         "presetConfig": {
           "types": [
             {"type": "feat", "section": "Library - Features"},
             {"type": "fix", "section": "Library - Fixes"},
-            {"type": "chore", "section": "Library - Chores"}
+            {"type": "chore", "section": "Library - Chores"},
+            {
+              "type": "test",
+              "section": "Library - Test"
+            }
           ]
         }
       }],
