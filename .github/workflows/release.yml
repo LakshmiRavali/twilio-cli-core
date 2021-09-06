@@ -95,7 +95,7 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Cli Release
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.OAI_TOKEN }}
           repo: LakshmiRavali/twilio-cli
           ref: ${{ github.event.inputs.cli-branch }}
           inputs: '{ "change-log": ${{ toJSON(needs.update-api-specs.outputs.change-log) }}, "version-type": "${{needs.update-api-specs.outputs.version-type}}" }'
