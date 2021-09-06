@@ -67,7 +67,7 @@ jobs:
           cache: 'npm'
       - name: semanticRelease
         run: |
-          npm install --save-dev @semantic-release/changelog @semantic-release/git
+#          npm install --save-dev @semantic-release/changelog @semantic-release/git
           npm ci && npx semantic-release -t \${version}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
