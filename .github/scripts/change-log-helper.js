@@ -1,7 +1,7 @@
 const fs = require('fs');
 const readline = require('readline');
 
-const { logger } = require('../src/services/messaging/logging');
+const { logger } = require('../../src/services/messaging/logging');
 
 const defaultVersionRegex = /(\d+)\.(\d+)\.(\d+)/;
 const defaultDateRegex = /\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])/;

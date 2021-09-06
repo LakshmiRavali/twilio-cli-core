@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [10.x]
+        node-version: [14.x]
     steps:
-      - name: Checkout to cli-core repo
+      - name: Checkout cli-core repo
         uses: actions/checkout@v2
       - run: npm install
       - name: Use Node.js ${{ matrix.node-version }}
@@ -21,9 +21,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: Run tests
-        run: |
-          npm ci
-          npm test
+        run: npm test
   update-api-specs:
     runs-on: ubuntu-latest
     needs: [test]
@@ -33,7 +31,7 @@ jobs:
     steps:
       - name: Create temporary folder for copying json files fom OAI repo
         run: mkdir -p ~/oai_definitions/json
-      - name: Checkout to OAI repo
+      - name: Checkout OAI repo
         uses: actions/checkout@v2
         with:
           repository: 'LakshmiRavali/twilio-oai'
@@ -41,7 +39,7 @@ jobs:
       - run: |
           cp -R spec/json/. ~/oai_definitions/json/
           cp -R CHANGES.md ~/oai_definitions/CHANGES.md
-      - name: Checkout to cli-core repo
+      - name: Checkout cli-core repo
         uses: actions/checkout@v2
       - name: Update OAI specs
         id: update-specs
@@ -55,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [update-api-specs]
     steps:
-      - name: Checkout to cli-core repo
+      - name: Checkout cli-core repo
         uses: actions/checkout@v2
       - run: |
           git pull
@@ -66,15 +64,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: semanticRelease
-        run: |
-          npm ci && npx semantic-release -t \${version}
+        run: npx semantic-release -t \${version}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   update-release:
     runs-on: ubuntu-latest
     needs: [update-api-specs, release]
     steps:
-      - name: Checkout to cli-core repo
+      - name: Checkout cli-core repo
         uses: actions/checkout@v2
       - run: git fetch --tags
       - name: Getting latest tag
