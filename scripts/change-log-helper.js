@@ -88,6 +88,9 @@ class ChangeLogHelper {
         try {
           this.logger.info('Updating the CHANGES.md');
           const data = fs.readFileSync(this.cliCoreChangelogFilename);
+          if (data.toString().includes(changeLog)) {
+            return '';
+          }
           const fd = fs.openSync(this.cliCoreChangelogFilename, 'w+');
           const insert = Buffer.from(changeLog);
           fs.writeSync(fd, insert, 0, insert.length, 0);

@@ -9,7 +9,7 @@
   "bugs": "https://github.com/twilio/twilio-cli/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/twilio/twilio-cli-core.git"
+    "url": "https://github.com/LakshmiRavali/twilio-cli-core.git"
   },
   "license": "MIT",
   "author": "Twilio @twilio",
@@ -43,6 +43,8 @@
   },
   "devDependencies": {
     "@oclif/test": "^1.2.6",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/git": "^9.0.0",
     "@twilio/cli-test": "^2.1.0",
     "chai": "^4.2.0",
     "eslint": "^7.5.0",
@@ -69,7 +71,12 @@
       }
     ],
     "plugins": [
-      "@semantic-release/commit-analyzer",
+      ["@semantic-release/commit-analyzer", {
+        "preset": "angular",
+        "releaseRules": [
+          {"type": "chore", "release": "patch"}
+        ]
+      }],
       "@semantic-release/release-notes-generator",
       [
         "@semantic-release/changelog",
