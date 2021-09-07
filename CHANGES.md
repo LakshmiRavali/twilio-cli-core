@@ -1,3 +1,14 @@
+## [6.0.0-rc.1](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.28.0-rc.1...6.0.0-rc.1) (2021-09-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* ChangeLog is empty Don't trigger CLI.
+
+### Library - Fixes
+
+* Updated empty ([e96490d](https://github.com/LakshmiRavali/twilio-cli-core/commit/e96490d86d6475d3923d07d8673fecd5573209b9))
+
 ## [5.28.0-rc.1](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.27.1...5.28.0-rc.1) (2021-09-06)
 
 
