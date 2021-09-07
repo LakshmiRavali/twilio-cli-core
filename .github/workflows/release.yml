@@ -66,8 +66,8 @@ jobs:
       - name: semanticRelease
         run: |
           npm i --save-dev @semantic-release/exec
-          result=npx semantic-release -t \${version}
-      - run: echo $result
+          result=$(npx semantic-release -t \${version})
+          echo $result
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   update-release:
