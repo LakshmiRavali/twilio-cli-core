@@ -18,6 +18,7 @@ jobs:
         node-version: [10.x]
     steps:
     - uses: actions/checkout@v2
+    - run: npm install
     - run: node .github/scripts/update-release.js "${{github.event.inputs.tag-name}}" "${{ github.event.inputs.change-log }}"
 #   release:
 #     runs-on: ubuntu-latest
