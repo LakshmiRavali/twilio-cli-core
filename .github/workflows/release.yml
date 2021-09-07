@@ -2,12 +2,13 @@ name: Cli-core Buils
 
 on:
   workflow_dispatch:
-    change-log:
-      description: 'Update changeLog data.'
-      required: true
-    tag-name:
-      description: 'tag version'
-      required: true
+    inputs:
+      change-log:
+        description: 'Update changeLog data.'
+        required: true
+      tag-name:
+        description: 'tag version'
+        required: true
 
 jobs:
   build:
