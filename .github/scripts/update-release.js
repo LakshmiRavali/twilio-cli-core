@@ -57,6 +57,7 @@ const run = async () => {
     info(`Updated release with body: ${updateReleaseResponse.data.body}`);
 
   } catch (error) {
+    info(`Error: ${error}`);
     setFailed(error.message);
   }
 }
