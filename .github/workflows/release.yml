@@ -64,7 +64,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: semanticRelease
-        run: npx semantic-release -t \${version}
+        run: |
+          npm i --save-dev @semantic-release/exec
+          npx semantic-release -t \${version}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   update-release:
