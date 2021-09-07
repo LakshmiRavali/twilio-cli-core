@@ -92,7 +92,7 @@ jobs:
     needs: [ update-api-specs, update-release]
     steps:
       - name: Invoke CLI workflow with changelog and version-type
-        if: ${{toJSON(needs.update-api-specs.outputs.change-log) != '' && needs.update-api-specs.outputs.version-type != ''}}
+        if: ${{toJSON(needs.update-api-specs.outputs.change-log) != null && needs.update-api-specs.outputs.version-type != '-1'}}
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: Cli Release
