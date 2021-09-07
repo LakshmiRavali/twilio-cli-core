@@ -51,7 +51,7 @@ const run = async () => {
         repo,
         release_id:oldReleaseId,
         tag,
-        body
+        body,
       });
 
     info(`Updated release with body: ${updateReleaseResponse.data.body}`);
