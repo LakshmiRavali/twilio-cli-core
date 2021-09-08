@@ -1,3 +1,10 @@
+## [6.0.0-rc.6](https://github.com/LakshmiRavali/twilio-cli-core/compare/6.0.0-rc.5...6.0.0-rc.6) (2021-09-08)
+
+
+### Library - Fixes
+
+* Added new releaserc ([e7abd60](https://github.com/LakshmiRavali/twilio-cli-core/commit/e7abd6005df008a851ad7b53537d7c1474cd64dc))
+
 ## [6.0.0-rc.5](https://github.com/LakshmiRavali/twilio-cli-core/compare/6.0.0-rc.4...6.0.0-rc.5) (2021-09-08)
 
 
