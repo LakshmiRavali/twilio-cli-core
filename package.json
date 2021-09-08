@@ -141,7 +141,7 @@
       [
         "@semantic-release/exec",
         {
-          "successCmd": "node .github/scripts/build.js ${nextRelease.version}"
+          "successCmd": "echo '::set-output name=TAG_NAME::${nextRelease.version}'"
         }
       ]
     ]
