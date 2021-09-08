@@ -80,7 +80,7 @@ jobs:
       - name: Checkout cli-core repo
         uses: actions/checkout@v2
       - name: Update release
-        if: ${{needs.release.outputs.tag-name != ""}}
+        if: ${{needs.release.outputs.tag-name != ''}}
         uses: tubone24/update_release@v1.2.0
         env:
           GITHUB_TOKEN: ${{ github.token }}
