@@ -43,5 +43,6 @@ if [ -n "$(git status --porcelain)" ]; then
   git push origin "$branch"
 else
   git commit --allow-empty -m "empty commit" 
+  git push origin github_action_changes
   echo "No changes to commit";
 fi
