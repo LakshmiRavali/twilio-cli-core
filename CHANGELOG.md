@@ -1,3 +1,42 @@
+# [5.31.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.30.0...5.31.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* changes ([d09fa19](https://github.com/LakshmiRavali/twilio-cli-core/commit/d09fa192cd4697e71060301327b172e84e6fbb4f))
+* create update_api_definitions file ([3c76feb](https://github.com/LakshmiRavali/twilio-cli-core/commit/3c76febdd8d3d18cc5c0b14250d28adf4e9db468))
+* Created file ([bd3f128](https://github.com/LakshmiRavali/twilio-cli-core/commit/bd3f128e97b65d025fdefc3ad31c48653a31b0d6))
+* Created file ([fb49df6](https://github.com/LakshmiRavali/twilio-cli-core/commit/fb49df6184d8a34a0cb871fb39898aff60628545))
+* final change ([4b90200](https://github.com/LakshmiRavali/twilio-cli-core/commit/4b90200a8f0823b67ad174c628e3245cb436213c))
+* Final Update ([2586611](https://github.com/LakshmiRavali/twilio-cli-core/commit/2586611f90f5dc5d676a315bab506f073a91a2a1))
+* New file ([8199a9a](https://github.com/LakshmiRavali/twilio-cli-core/commit/8199a9aabf095f49d16d90dd04ec3180965d4808))
+* new files ([313e078](https://github.com/LakshmiRavali/twilio-cli-core/commit/313e078a4f5c2d5623eee9680cb00b406df10012))
+* Python update ([3d7a16b](https://github.com/LakshmiRavali/twilio-cli-core/commit/3d7a16b9b9cb3918cd2ea4f831d42bdfd2817d63))
+* test ([25de3c2](https://github.com/LakshmiRavali/twilio-cli-core/commit/25de3c2bda4c0912e9037e54f3bfd52ca00c7b87))
+* test ([cccea62](https://github.com/LakshmiRavali/twilio-cli-core/commit/cccea62a721872f78f4ddef1bf0b1ad0313bfae1))
+* test ([cc22418](https://github.com/LakshmiRavali/twilio-cli-core/commit/cc224185cc1967a9bd94c9e5c0d1fc397b3c8ee8))
+* Test workflow running ([989e34a](https://github.com/LakshmiRavali/twilio-cli-core/commit/989e34ae83ae8eee0940a0edd5318f8d71871de8))
+* testt ([d73e111](https://github.com/LakshmiRavali/twilio-cli-core/commit/d73e111757c1d710e1dfff31895258e2db622b90))
+* testt ([037dc0a](https://github.com/LakshmiRavali/twilio-cli-core/commit/037dc0afa183af5f2a284c725efa60ee5351e704))
+* tets ([37a5d78](https://github.com/LakshmiRavali/twilio-cli-core/commit/37a5d78997c3bbdd5722c862bdd8b958004f7ca2))
+* tett ([25a131c](https://github.com/LakshmiRavali/twilio-cli-core/commit/25a131c9b6c7a35df38d477c0e272e3ac5cf6d15))
+* Upadted ([8f7a196](https://github.com/LakshmiRavali/twilio-cli-core/commit/8f7a196b3fb4b6bb6daeb7cd4fab0995e40b7681))
+* update ([d676c60](https://github.com/LakshmiRavali/twilio-cli-core/commit/d676c60f8b93180235c2b27c35516db39f244359))
+* update ([91f7cfe](https://github.com/LakshmiRavali/twilio-cli-core/commit/91f7cfe67b6a43a862aa82f4d254e1b16efe28ec))
+* updated ([443d19c](https://github.com/LakshmiRavali/twilio-cli-core/commit/443d19cce02b839f8ec8b8190554e565a2734cd8))
+* Updated ([949f18e](https://github.com/LakshmiRavali/twilio-cli-core/commit/949f18e9e19753976a46b4c6e91cc069c4203fe2))
+* Updated again ([095ec0d](https://github.com/LakshmiRavali/twilio-cli-core/commit/095ec0db6a603eef5da381cdf1afaae27c508cb2))
+* Updated with js ([2cc0578](https://github.com/LakshmiRavali/twilio-cli-core/commit/2cc057859cde90d831412db7c025d81e7887e740))
+
+
+### Features
+
+* Updated api definitions ([5c013f7](https://github.com/LakshmiRavali/twilio-cli-core/commit/5c013f700907213622ffa1243db9f606f31a2cff))
+* Updated api definitions ([b4a74df](https://github.com/LakshmiRavali/twilio-cli-core/commit/b4a74df56c89e11cb4aa47afff9aaa68a838830b))
+* Updated api definitions ([2d5ceec](https://github.com/LakshmiRavali/twilio-cli-core/commit/2d5ceeccea18f15d6ef03cd41d7f856f6c4b624b))
+* Updated api definitions ([8c4bf52](https://github.com/LakshmiRavali/twilio-cli-core/commit/8c4bf527f756c74b19bb596512778cfd3f2c1f7d))
+* Updated api definitions ([1f3b920](https://github.com/LakshmiRavali/twilio-cli-core/commit/1f3b920bb544d5a739bd1f7fe2d7d0bd14399c26))
+
 # [5.30.0](https://github.com/LakshmiRavali/twilio-cli-core/compare/5.29.0...5.30.0) (2021-08-19)
 
 
