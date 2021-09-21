@@ -8,30 +8,29 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [10.x]
-    steps:
-    - uses: actions/checkout@v2
-    - run: echo ${{secrets.TWILIO_EMAIL}}
-#   release:
+#   build:
 #     runs-on: ubuntu-latest
-#     needs: [build]
+#     strategy:
+#       matrix:
+#         node-version: [10.x]
 #     steps:
 #     - uses: actions/checkout@v2
-#     - run: npm install
-#     - name: Use Node.js ${{ matrix.node-version }}
-#       uses: actions/setup-node@v2
-#       with:
-#         node-version: ${{ matrix.node-version }}
-#         cache: 'npm'
-#     - name: Install semantic-release extra plugins
-#       run: npm install --save-dev @semantic-release/changelog @semantic-release/git
-#     - run: npm ci && npx semantic-release -t \${version}
-#       env:
-#         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#     - run: echo ${{secrets.TWILIO_EMAIL}}
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: npm install
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - name: Install semantic-release extra plugins
+      run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+    - run: npm ci && npx semantic-release -t \${version}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #   build:
 
 #     runs-on: ubuntu-latest
