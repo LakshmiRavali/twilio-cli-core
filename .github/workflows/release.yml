@@ -56,26 +56,25 @@ jobs:
     runs-on: ubuntu-latest
     needs: [update-api-specs]
     outputs:
-      tag-name: ${{ steps.semantic-release.outputs.TAG_NAME }}
+      tag-name: '5.28.3'
     steps:
       - name: Checkout cli-core repo
         uses: actions/checkout@v2
       - run: |
           git pull
           npm install
-      - name: semanticRelease
-        id: semantic-release
-        run: |
-          npm i --save-dev @semantic-release/exec
-          npx semantic-release -t \${version}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "${{steps.semantic-release.outputs.TAG_NAME}}"
+#       - name: semanticRelease
+#         id: semantic-release
+#         run: |
+#           npm i --save-dev @semantic-release/exec
+#           npx semantic-release -t \${version}
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Update release
         run: node .github/scripts/update-release.js
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{steps.semantic-release.outputs.TAG_NAME}}
+          TAG_NAME: '5.28.3'
           RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
           REPO_NAME: LakshmiRavali/twilio-cli-core
   triggerCliWorkflow:
