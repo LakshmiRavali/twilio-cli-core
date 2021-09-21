@@ -90,7 +90,7 @@ jobs:
         if: ${{toJSON(needs.update-api-specs.outputs.change-log) != null && needs.update-api-specs.outputs.version-type != '-1'}}
         run: node .github/scripts/trigger-workflow.js
         env:
-          GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
+          REPO_ACCESS_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}
           WORKFLOW_NAME: 'release.yml'
           BRANCH_NAME: ${{github.event.inputs.cli-branch}}
           REPO_NAME: LakshmiRavali/twilio-cli

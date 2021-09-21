@@ -4,7 +4,7 @@ const { Octokit } = require("@octokit/rest");
 const run = async () => {
   try {
     const octokit = new Octokit({
-      auth: process.env.GITHUB_TOKEN
+      auth: process.env.REPO_ACCESS_TOKEN
     });
     const workflowRef = process.env.WORKFLOW_NAME;
     const ref = process.env.BRANCH_NAME;
