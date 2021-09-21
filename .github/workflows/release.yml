@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [update-api-specs]
     outputs:
-      tag-name: '5.28.3'
+      tag-name: '5.31.0'
     steps:
       - name: Checkout cli-core repo
         uses: actions/checkout@v2
@@ -74,7 +74,7 @@ jobs:
         run: node .github/scripts/update-release.js
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          TAG_NAME: '5.28.3'
+          TAG_NAME: '5.31.0'
           RELEASE_BODY: ${{needs.update-api-specs.outputs.change-log}}
           REPO_NAME: LakshmiRavali/twilio-cli-core
   triggerCliWorkflow:
