@@ -1,35 +1,3 @@
-## [6.0.0-rc.9](https://github.com/LakshmiRavali/twilio-cli-core/compare/6.0.0-rc.8...6.0.0-rc.9) (2021-09-23)
-
-
-### Library - Fixes
-
-* CHanges ([6afb19e](https://github.com/LakshmiRavali/twilio-cli-core/commit/6afb19ed33b0413b8acfe2233e15e18c3f2b17f5))
-* Updated api definitions ([ea4daaa](https://github.com/LakshmiRavali/twilio-cli-core/commit/ea4daaa64c3f3c89bb6005ffadf53df3b41ad90c))
-
----------------------------
-**Api**
-- Add Programmabled Voice SIP Refer call transfers (`calls-transfers`) to usage records
-- Add Flex Voice Usage category (`flex-usage`) to usage records
-
-**Conversations**
-- Add `Order` query parameter to Message resource read operation
-
-**Insights**
-- Added `partial` to enum processing_state_request
-- Added abnormal session filter in Call Summaries
-
-**Messaging**
-- Add brand_registration_sid as an optional query param for us_app_to_person_usecase api
-
-**Pricing**
-- add trunking_numbers resource (v2)
-- add trunking_country resource (v2)
-
-**Verify**
-- Changed to private beta the `TemplateSid` optional parameter on Verification creation.
-- Added the optional parameter `Order` to the list Challenges endpoint to define the list order.
-
-
 twilio-cli-core changelog
 =====================
 
