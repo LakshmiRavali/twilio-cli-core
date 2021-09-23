@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       cli-branch:
-        description: 'Run workflow in the branch'
+        description: 'Run workflow in the branch.'
         default: main
 jobs:
   test:
