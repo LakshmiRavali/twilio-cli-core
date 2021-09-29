@@ -67,7 +67,7 @@ jobs:
         id: semantic-release
         run: |
           npm i --save-dev @semantic-release/exec
-          npx semantic-release -t \${version}
+          npx semantic-release -t \${version} --debug
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Update release
