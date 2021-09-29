@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: 'LakshmiRavali/twilio-oai'
-          token:  ${{ secrets.OAI_TOKEN }}
+          token:  ${{ secrets.REPO_ACCESS_TOKEN }}
       - run: |
           cp -R spec/json/. ~/oai_definitions/json/
           cp -R CHANGES.md ~/oai_definitions/CHANGES.md
