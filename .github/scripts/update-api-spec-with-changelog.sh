@@ -30,10 +30,10 @@ if [ -n "$(git status --porcelain)" ]; then
   commitMessage=''
   if [ "$versionType" == 0 ] || [ "$versionType" == 1 ]
   then
-    commitMessage='oai-feat: Updated api definitions'
+    commitMessage='oaiFeat: Updated api definitions'
   elif [ "$versionType" == 2 ]
   then
-    commitMessage='oai-fix: Updated api definitions'
+    commitMessage='oaiFix: Updated api definitions'
   else
     echo "Invalid versionType: $versionType";
     exit
