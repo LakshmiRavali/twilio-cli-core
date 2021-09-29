@@ -14,10 +14,10 @@
 					"type": "chore",
 					"release": "patch"
 				}, {
-					"type": "oai-fix",
+					"type": "oaiFix",
 					"release": "patch"
 				}, {
-					"type": "oai-feat",
+					"type": "oaiFeat",
 					"release": "minor"
 				}]
 			}
@@ -48,7 +48,7 @@
 							"section": "Library - Docs"
 						},
 						{
-							"type": "oai-fix",
+							"type": "oaiFix",
 							"section": "Library - oai-fix",
 							 "hidden": true
 						}
