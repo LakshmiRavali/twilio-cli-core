@@ -46,6 +46,11 @@
 						{
 							"type": "docs",
 							"section": "Library - Docs"
+						},
+						{
+							"type": "oai-fix",
+							"section": "Library - oai-fix",
+							 "hidden": true
 						}
 					]
 				}
