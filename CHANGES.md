@@ -1,3 +1,10 @@
+## [6.0.0-rc.12](https://github.com/LakshmiRavali/twilio-cli-core/compare/6.0.0-rc.11...6.0.0-rc.12) (2021-09-29)
+
+
+### Library - Chores
+
+* updated ([4ed8ebb](https://github.com/LakshmiRavali/twilio-cli-core/commit/4ed8ebb66eff09d2d27d9ab1d14fa34e451c8eeb))
+
 ---------------------------
 **Api**
 - Add Programmabled Voice SIP Refer call transfers (`calls-transfers`) to usage records
