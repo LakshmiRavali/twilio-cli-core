@@ -10,7 +10,6 @@
 		[
 			"@semantic-release/commit-analyzer",
 			{
-				"preset": "angular",
 				"releaseRules": [{
 					"type": "chore",
 					"release": "patch"
